@@ -69,9 +69,9 @@ export default function Page() {
             }}
           >
             <h2 className="text-center text-2xl font-semibold sm:text-3xl">
-              Loved by users.
+              解放 开发人员
               <br />
-              Built for developers.
+              快速 响应 用户需求
             </h2>
           </div>
           <Features />
@@ -91,7 +91,7 @@ function Architecture() {
     <div className="flex flex-col gap-4 border-x border-t p-8 md:px-12 lg:flex-row">
       <div className="text-start">
         <p className="px-2 py-1 text-sm font-mono bg-fd-primary text-fd-primary-foreground font-bold w-fit mb-4">
-          Designed with Love
+          全流程 生命周期 管理
         </p>
         <h2 className="text-2xl font-semibold mb-4">A breakable framework.</h2>
         <p className="text-fd-muted-foreground mb-6">
@@ -192,7 +192,7 @@ function End() {
     <div className="flex flex-col border-b border-r md:flex-row *:border-l *:border-t">
       <div className="group flex flex-col min-w-0 flex-1 pt-8 **:transition-colors">
         <h2 className="text-3xl text-center font-extrabold font-mono uppercase text-fd-muted-foreground mb-4 lg:text-4xl group-hover:text-blue-500">
-          Build Your Docs
+          AI 创造 未来
         </h2>
         <p className="text-center font-mono text-xs text-fd-foreground/60 mb-8 group-hover:text-blue-500/80">
           light and gorgeous, just like the moon.
@@ -280,29 +280,29 @@ function Highlights() {
     <div className="grid grid-cols-1 border-r md:grid-cols-2 lg:grid-cols-3">
       <div className="col-span-full flex flex-row items-start justify-center border-l border-t p-8 pb-2 text-center">
         <h2 className="bg-fd-primary text-fd-primary-foreground px-1 text-2xl font-semibold">
-          Highlights
+          产品亮点
         </h2>
         <MousePointer className="-ml-1 mt-8" />
       </div>
-      <Highlight icon={TimerIcon} heading="Light & Fast.">
+      <Highlight icon={TimerIcon} heading="灵活 & 快速.">
         Powered by React Server Components, images optimized by default.
       </Highlight>
-      <Highlight icon={RocketIcon} heading="Framework Agnostic.">
+      <Highlight icon={RocketIcon} heading="高效集成.">
         Building documentation site with Next.js, React Router, or Tanstack
         Start.
       </Highlight>
-      <Highlight icon={LayoutIcon} heading="Accessibility & UX first.">
+      <Highlight icon={LayoutIcon} heading="测试 & 训练.">
         Focus on user experience and accessibility.
       </Highlight>
-      <Highlight icon={ServerIcon} heading="Server First.">
+      <Highlight icon={ServerIcon} heading="日志追踪.">
         Allowing seamless CMS integration and dynamic content integrated with
         server.
       </Highlight>
-      <Highlight icon={KeyboardIcon} heading="Markdown & MDX.">
+      <Highlight icon={KeyboardIcon} heading="RAG.">
         Syntax highlighting on Shiki, Typescript Twoslash, OpenAPI docs
         generation, and more.
       </Highlight>
-      <Highlight icon={PersonStandingIcon} heading="Personalized.">
+      <Highlight icon={PersonStandingIcon} heading="用户支持.">
         Advanced options for customising your theme in a comfortable way.
       </Highlight>
     </div>
@@ -350,18 +350,19 @@ function Hero() {
             "repeating-linear-gradient(65deg, var(--color-purple-300), var(--color-purple-300) 12px, color-mix(in oklab, var(--color-blue-600) 30%, transparent) 20px, transparent 200px)",
         }}
       />
-      <h1 className="mb-8 text-4xl font-medium md:hidden">Build Your Docs</h1>
+      <h1 className="mb-8 text-4xl font-medium md:hidden">开始 创建 您的</h1>
       <h1 className="mb-8 max-w-[600px] text-4xl font-medium max-md:hidden">
-        Build excellent documentation
+        一个企业级 Agent 开发平台套件
         <br />
-        with less effort
+        
       </h1>
       <p className="mb-8 text-fd-muted-foreground md:max-w-[80%] md:text-xl">
-        Fumadocs is a beautiful documentation framework for developers,
-        flexible, performant, running on your React framework.
+        Y-Agent Studio 是一个面向开发人员的框架，灵活、高性能；支持测试、模型微调。<br />
+
+        可以快速集成到，现有的企业 IT 环境中。
       </p>
       <div className="inline-flex items-center gap-3 max-md:mx-auto">
-        <Link href="/docs">开始</Link>
+        <Link href="/docs">快速开始.</Link>
       </div>
       <PreviewImages />
     </div>
@@ -404,7 +405,7 @@ function Feedback() {
     <div className="relative border-x border-t pt-8 bg-fd-background">
       <div className="flex flex-row gap-6 justify-between px-6 mb-6 items-center">
         <p className="text-sm font-medium md:text-lg">
-          Trusted by awesome teams and developers
+          值得优秀团队和开发人员的信赖！
         </p>
       </div>
     </div>
@@ -415,16 +416,16 @@ function Introduction(): React.ReactElement {
   return (
     <div className="grid grid-cols-1 border-r md:grid-cols-2">
       <div className="flex flex-col gap-2 border-l border-t px-6 py-12 md:py-16">
-        <h3 className="text-xl font-semibold">Create it.</h3>
+        <h3 className="text-xl font-semibold">从源码创建.</h3>
         <p className="mb-8 text-fd-muted-foreground">
-          Initialize a new docs with a command.
+          从源码安装启动 适合生产环境.
         </p>
         <CreateAppAnimation />
       </div>
       <div className="flex flex-col gap-2 border-l border-t px-6 py-12 md:py-16">
-        <h3 className="text-xl font-semibold">Write.</h3>
+        <h3 className="text-xl font-semibold">直接下载启动器.</h3>
         <p className="text-fd-muted-foreground">
-          Write content, with automation tools & type-safe data validation.
+          快速开始 直接下载启动器 适合测试研发.
         </p>
         <div className="relative flex flex-col">
           <CodeBlock
@@ -450,9 +451,9 @@ Hello World
         </div>
       </div>
       <div className="col-span-full flex flex-col items-center gap-2 border-l border-t px-6 py-16 text-center">
-        <h3 className="text-2xl font-semibold">Ship.</h3>
+        <h3 className="text-2xl font-semibold">云镜像</h3>
         <p className="text-fd-muted-foreground">
-          Deploy your docs easily with any hosting platforms.
+          镜像已上传至以下平台，您可以从平台创建。
         </p>
 
         <div className="mt-4 flex flex-row flex-wrap items-center gap-8">
@@ -473,10 +474,10 @@ function Contributing() {
     <div className="flex flex-col items-center border-x border-t px-4 py-16 text-center">
       <Heart fill="currentColor" className="text-pink-500 mb-4" />
       <h2 className="mb-4 text-xl font-semibold sm:text-2xl">
-        Made Possible by You.
+        敏捷 安全 稳定.
       </h2>
       <p className="mb-4 text-fd-muted-foreground">
-        Fumadocs is 100% powered by passion and open source community.
+        提供从构思、开发部署、到训练的一整套框架，帮助你的 IT 团队 快速升级现有 业务系统。
       </p>
       <div className="mb-8 flex flex-row items-center gap-2"></div>
     </div>
@@ -487,8 +488,8 @@ function Features() {
   return (
     <div className="grid grid-cols-1 border-r md:grid-cols-2">
       <Feature
-        icon={PaperclipIcon}
-        subheading="Source Agnostic"
+        icon={SearchIcon}
+        subheading="完整开源"
         heading="Your source. Your choice"
         description={
           <>
@@ -531,8 +532,8 @@ function Features() {
         </div>
       </Feature>
       <Feature
-        icon={SearchIcon}
-        subheading="Search Integration"
+        icon={CpuIcon}
+        subheading="支持 预训练 SPF 强化学习"
         heading="Enhance your search experience."
         description="Integrate with Orama Search and Algolia Search in your docs easily."
       >
@@ -540,7 +541,7 @@ function Features() {
       </Feature>
       <Feature
         icon={Terminal}
-        subheading="Fumadocs CLI"
+        subheading="可以快速与代码集成"
         heading="The Shadcn UI for docs"
         description="Fumadocs CLI creates interactive components for your docs, offering a rich experience to your users."
       >
@@ -566,8 +567,8 @@ function Features() {
         </div>
       </Feature>
       <Feature
-        icon={CpuIcon}
-        subheading="Robust"
+        icon={PaperclipIcon}
+        subheading="文档支持"
         heading="Flexibility that cover your needs."
         description="Well documented, separated in packages."
       >
