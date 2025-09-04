@@ -13,6 +13,7 @@
         "train",
         "sys_setting",
         "authorization",
-        "demo"
+        "demo",
+        "faq"
     ]
 }

@@ -138,7 +138,7 @@ function Footer() {
         <div>
           <p className="mb-1 text-sm font-semibold">Y-Agent Studio</p>
           <p className="text-xs">
-            Built with ❤️ by{' '}
+            Built with ❤️ by{' Y-Agent Studio Team'}
             
           </p>
         </div>

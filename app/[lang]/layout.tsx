@@ -5,10 +5,11 @@
     import { Geist, Geist_Mono } from 'next/font/google';
     import 'fumadocs-twoslash/twoslash.css';
     import 'katex/dist/katex.css';
+    import '@/app/favicon.svg';
     
     export const metadata: Metadata = {
-      title: 'Your App Title',
-      description: 'Your app description',
+      title: 'Y-Agent Studio',
+      description: 'Y-Agent Studio 一个企业级Agent开发套件，包含了Agent开发和模型训练',
     };
     
     const geist = Geist({
@@ -71,7 +72,7 @@
         <html suppressHydrationWarning lang={lang}
         >
           <head>
-            <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+            <link rel="icon" type="image/svg+xml" href="/cn/docs/icon.png" />
           </head>
           <body className="test relative flex min-h-screen flex-col">
             
