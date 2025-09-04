@@ -1,0 +1,12 @@
+{
+    "title": "说明文档",
+    "description": "Training 教程",
+    "root": true,
+    "icon": "Airplay",
+    "pages": [
+        "---beginner---",
+        "beginner",
+        "---advanced---",
+        "advanced"
+    ]
+  }

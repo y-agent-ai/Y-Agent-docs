@@ -1,0 +1,298 @@
+---
+title: Python 初学者指南
+description: 一个全面的指南，帮助你开始 Python 编程之旅
+icon: Squirrel
+---
+
+# Python 初学者指南
+
+本指南将帮助你开始 Python 编程之旅。Python 以其简单性和可读性而闻名，是初学编程语言的绝佳选择。
+
+## 目录
+
+- [设置 Python](#setting-up-python)
+- [Python 基础](#python-basics)
+- [数据类型](#data-types)
+- [控制流](#control-flow)
+- [函数](#functions)
+- [文件操作](#working-with-files)
+- [下一步](#next-steps)
+
+## 设置 Python
+
+### 安装
+
+1. **下载 Python**: 访问 [python.org](https://www.python.org/downloads/) 并下载适用于你操作系统的最新版本。
+2. **安装 Python**: 运行安装程序并确保在点击安装之前勾选“将 Python 添加到 PATH”。
+3. **验证安装**: 打开命令提示符 (Windows) 或终端 (Mac/Linux) 并输入:
+
+```
+python --version
+```
+
+你应该会看到 Python 版本号，如果安装成功。
+
+### 选择一个编辑器
+
+你有很多选择:
+
+- **IDLE**: 与 Python 一起捆绑，适合初学者
+- **VS Code**: 免费，功能强大的编辑器，具有出色的 Python 支持
+- **PyCharm**: 功能齐全的 Python IDE（免费社区版可用）
+
+## Python 基础
+
+### 你的第一个程序
+
+创建一个名为 `hello.py` 的文件并添加此代码:
+
+```python
+print("Hello, World!")
+```
+
+从命令行运行:
+
+```
+python hello.py
+```
+
+### 变量和赋值
+
+```python
+# 变量不需要用类型声明
+name = "John"
+age = 30
+height = 5.9
+
+# You can print variables easily
+print(name)
+print(f"Age: {age}, Height: {height}")
+```
+
+### 用户输入
+
+```python
+name = input("Enter your name: ")
+print(f"Hello, {name}!")
+
+# Input 返回字符串，所以转换为数字
+age = int(input("Enter your age: "))
+print(f"Next year, you'll be {age + 1} years old.")
+```
+
+## 数据类型
+
+### 数字
+
+```python
+# 整数
+x = 5
+y = -10
+
+# Floating point
+pi = 3.14159
+e = 2.71828
+
+# Basic operations
+sum = x + y
+product = x * y
+quotient = pi / 2
+exponent = 2 ** 3  # 2 raised to the power of 3 (equals 8)
+```
+
+### 字符串
+
+```python
+greeting = "Hello"
+name = "Python"
+
+# 字符串连接
+message = greeting + ", " + name + "!"
+print(message)  # Hello, Python!
+
+# String methods
+print(name.upper())  # PYTHON
+print(message.lower())  # hello, python!
+print(len(message))  # 14 (length of string)
+```
+
+### 列表
+
+```python
+# 列表可以包含混合类型
+fruits = ["apple", "banana", "cherry"]
+numbers = [1, 2, 3, 4, 5]
+mixed = [1, "hello", 3.14, True]
+
+# Accessing elements (zero-indexed)
+print(fruits[0])  # apple
+print(fruits[-1])  # cherry (negative indexes count from the end)
+
+# Modifying lists
+fruits.append("orange")  # Add to the end
+fruits.insert(1, "blueberry")  # Insert at position
+fruits.remove("banana")  # Remove by value
+popped = fruits.pop()  # Remove and return the last item
+
+# 列表切片
+print(numbers[1:3])  # [2, 3] (从索引 1 到但不包括索引 3 的元素)
+```
+
+### 字典
+
+```python
+# 键值对
+person = {
+    "name": "Alice",
+    "age": 25,
+    "job": "Developer"
+}
+
+# Accessing values
+print(person["name"])  # Alice
+
+# Adding or modifying entries
+person["email"] = "alice@example.com"
+person["age"] = 26
+
+# Checking if a key exists
+if "job" in person:
+    print(f"Job: {person['job']}")
+```
+
+## 控制流
+
+### 条件语句
+
+```python
+age = 18
+
+if age < 13:
+    print("Child")
+elif age < 18:
+    print("Teenager")
+else:
+    print("Adult")
+```
+
+### 循环
+
+```python
+# 带列表的 for 循环
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(f"I like {fruit}s")
+
+# For loop with a range
+for i in range(5):  # 0 to 4
+    print(i)
+
+# While loop
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+```
+
+### Break 和 Continue
+
+```python
+# Break 完全退出循环
+for i in range(10):
+    if i == 5:
+        break
+    print(i)  # Prints 0 through 4
+
+# Continue skips the rest of the current iteration
+for i in range(10):
+    if i % 2 == 0:
+        continue
+    print(i)  # Prints only odd numbers
+```
+
+## 函数
+
+### 定义函数
+
+```python
+def greet(name):
+    """This function greets the person passed in as a parameter"""
+    return f"Hello, {name}!"
+
+# Calling the function
+message = greet("Python")
+print(message)  # Hello, Python!
+```
+
+### 默认参数
+
+```python
+def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
+
+print(greet("Python"))  # Hello, Python!
+print(greet("Python", "Hi"))  # Hi, Python!
+```
+
+### 多个返回值
+
+```python
+def calculate(a, b):
+    addition = a + b
+    subtraction = a - b
+    return addition, subtraction
+
+add, sub = calculate(10, 5)
+print(f"10 + 5 = {add}")  # 10 + 5 = 15
+print(f"10 - 5 = {sub}")  # 10 - 5 = 5
+```
+
+## 文件操作
+
+### 读取文件
+
+```python
+# 读取整个文件
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+# Reading line by line
+with open("example.txt", "r") as file:
+    for line in file:
+        print(line.strip())  # strip() removes newline characters
+```
+
+### 写入文件
+
+```python
+# 写入文件（覆盖现有内容）
+with open("output.txt", "w") as file:
+    file.write("Hello, Python!")
+
+# Appending to a file
+with open("output.txt", "a") as file:
+    file.write("\nLearning file handling.")
+```
+
+## 下一步
+
+现在你已经了解了基础知识，这里有一些建议可以探索下一步:
+
+1. **错误处理**: 学习 try/except 块
+2. **模块和包**: 导入和使用外部代码
+3. **面向对象编程**: Python 中的类和对象
+4. **数据科学库**: Pandas, NumPy, Matplotlib
+5. **Web 开发**: Flask 或 Django 框架
+
+## 实践项目
+
+最好的学习方法是实践。试试这些初学者项目:
+
+1. **待办事项应用**: 存储和管理任务列表
+2. **简单计算器**: 构建一个基本的计算器
+3. **密码生成器**: 创建随机、安全的密码
+4. **天气应用**: 使用 API 获取和显示天气数据
+5. **基于文本的游戏**: 创建一个简单的冒险游戏
+
+---

@@ -1,0 +1,77 @@
+---
+title: 模型配置
+---
+
+## 基本概念
+
+* 推理模型： 也就是常说的大模型，目前已支持主流的模型接口规范：OpenAI、Ollama、ZhipuAI、Tongyi。
+* Embedding 模型：也就是常说向量嵌入模型，用于将文档做 Embedding 用的是该类型的模型。在使用了知识库的应用中，将用户的提问做 Embedding 处理也是用的该类型的模型。
+已支持的 Embedding 模型接口规范：OpenAI、vllm、xinference
+* Rerank 模型：目前不支持Rerank 模型，后续也没有支持的计划。原因[TODO：]
+* 语音转文字模型：在对话型应用中，将语音转文字用的是该类型的模型。
+已支持的语音转文字模型接口规范：OpenAI
+
+目前只支持LLM模型，后续会添加多模态模型和语音模型。根据用户需求，我们将陆续支持更多 LLM 供应商。
+
+## 添加模型
+初次使用时你需要先在Y-Agent 模型配置 页面内添加并配置所需要的模型。
+设置-模型供应商
+TODO：补图
+
+你可以根据不同情景的应用需求选择你的模型供应商。
+
+你在添加模型前，应该前往模型提供商官方网站获得他们的 API key 。
+​
+
+
+
+## 接入方法
+### 添加推理模型
+模型配置——新增
+
+选择Provider（模型供应商）
+设置温度
+
+填写API地址
+填写API-KEY
+填写自定义模型名称（用户可自由命名，用于系统内部显示的名称）
+填写模型推理服务端提供的模型名称
+
+填写最大输出token和超时时间（选填）
+
+案例：
+远端模型：
+OpenAI、Azure OpenAI Service、Anthropic、Hugging Face Hub、Replicate、Xinference、OpenLLM、讯飞星火、文心一言、通义千问、Minimax、ZHIPU(ChatGLM)
+
+自有模型：
+Vllm
+SGLgang
+Ollama
+Xinference
+
+### 设置Embedding 模型
+系统右上角-图标 系统设置——向量模型配置 
+
+选择Provider（模型供应商）
+填写模型推理服务端提供的模型名称
+填写API地址
+填写API-KEY
+
+
+
+Hugging Face
+Replicate
+Xinference
+OpenLLM
+
+​# 使用模型
+配置完模型后，就可以在应用中使用这些模型了：
+
+
+当前支持模型类型如下：
+llm 文本生成模型
+text_embedding 文本 Embedding 模型
+speech2text 语音转文字
+tts 文字转语音
+moderation 审查
+

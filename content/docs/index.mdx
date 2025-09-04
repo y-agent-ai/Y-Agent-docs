@@ -1,0 +1,65 @@
+---
+title: Y-Agent Studio介绍篇
+description: Y-Agent Studio介绍篇
+icon: Pickaxe
+---
+import { HomeIcon } from 'lucide-react';
+
+# Y-Agent Studio 介绍
+Y-Agent Studio 是一个面向企业级应用的Agent开发套件，旨在解决传统Agent开发中存在的两大核心痛点：
+1.  **代码繁琐**：通过抽象和封装，极大减少重复性编码工作。
+2.  **调整麻烦**：提供高可配置性和模块化设计，使Agent的迭代和优化变得简单高效。
+
+
+## 包含以下几个软件
+
+<Cards>
+  <Card icon={<HomeIcon />} title="Y-Agent" href="https://nextjs.org/docs" >
+    核心模块，支持流程编排、RAG、测试、预料生产等功能。
+  </Card>
+  <Card icon={<HomeIcon />} title="Y-Training" href="https://fumadocs.vercel.app" >
+    与Y-Agent无缝集成，支持预训练、指令微调、强化学习。
+  </Card>
+  <Card icon={<HomeIcon />} title="Y-DocSqueeze" href="https://nextjs.org/docs" >
+    一个利用注意力机制，提供特征提取、聚类、语料分析等功能
+  </Card>
+  <Card icon={<HomeIcon />} title="Y-DocRetrieve" href="https://fumadocs.vercel.app" >
+    文档召回与压缩
+  </Card>
+</Cards>
+
+## 概述
+
+
+本框架专注于**深度功能**开发，提供强大的底层能力和定制化工具，而非简单的零代码/低代码平台。
+它不适合毫无基础的初学者，而是专为辅助具备一定开发经验的**程序开发人员**而设计。
+首先我们设计了Y-Agent工作流平台
+随着工作流构建，我们发现，仅靠提示词和工作流，模型无法妥善完成垂直领域任务，
+于是有了测试和训练模块，就是标注并生产语料。
+由于大部分垂直领域语料的特殊性，传统的SFT方法很容易过拟合，
+所以我们设计了全新的SFT训练和强化学习方法，并集成到Y-Training框架里，
+能够从Y-Agent平台收集语料，并无缝衔接，完成预训练指令微调和强化学习。
+
+---
+
+## 为什么使用Y-Agent Studio
+
+
+## Y-Agent Studio适合什么人或者组织
+
+## 核心概念与必备基础知识
+
+要高效使用 Y-Agent Studio，开发者需要具备以下基础知识：
+
+*   **数据类型与JSON结构**：需要用户了解计算机编程的基本数据类型、以及JSON格式。
+
+
+*   **模型调用**：Agent的核心智能来源于大语言模型(LLM)或其他机器学习模型。
+要求理解如何通过API调用云端或本地部署的模型。熟悉常见的API调用方式、参数设置、提示词编写。
+
+*   **Web API 开发与集成**：Agent需要与外部系统、服务或数据库进行交互，这主要通过Web API实现。
+要求掌握RESTful API的设计原则，并具备构建简单API**服务**(Provide)的能力，以供Agent调用或外部系统调用Agent。
+* **了解模型训练相关知识**：包括SFT、RL等
+
+
+

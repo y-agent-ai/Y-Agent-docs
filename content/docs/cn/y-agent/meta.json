@@ -1,0 +1,18 @@
+{
+    "title": "说明文档",
+    "description": "yagent",
+    "icon": "Airplay",
+    "defaultOpen": true,
+    "pages": [
+        "quick_start",
+        "introduction",
+        "model_setting",
+        "work_flow",
+        "knowledge_base",
+        "about_test",
+        "train",
+        "sys_setting",
+        "authorization",
+        "demo"
+    ]
+}
