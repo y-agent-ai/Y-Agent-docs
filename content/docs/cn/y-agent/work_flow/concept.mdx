@@ -14,10 +14,10 @@ description: 为了帮您更快的理解Y-Agent框架的使用方法，需要您
 
 ### 大模型：
 作为AI工作的核心功能模块，依托大模型的推理能力，可以实现以下功能：
-1. **灵活运用各类工具:**   [为模型节点配置工具](TODO：URL).
-2. **智能选择下游流程:**   [自动选择下游](TODO：URL).
-3. **实现变量存储与管理:**   [存储自身变量](TODO：URL).  [存储工作空间变量](TODO：URL).
-4. **利用分身机制提升AI工作流的性能与效率:**   [分身介绍](TODO：URL).
+1. **灵活运用各类工具:**   [为模型节点配置工具](./wf_nodes/model_node#可用工具).
+2. **智能选择下游节点:**   [自动选择下游](./wf_nodes/model_node#下游角色).
+3. **实现变量存储与管理:**   [存储自身变量](./wf_nodes/model_node#变量存储).  [存储工作空间变量](./wf_nodes/model_node#变量存储).
+4. **利用分身机制提升AI工作流的性能与效率:**   [分身介绍](./wf_nodes/model_node#输出分身).
 
 ### **执行器**
 
@@ -41,9 +41,9 @@ description: 为了帮您更快的理解Y-Agent框架的使用方法，需要您
 [工具参数配置](TODO：URL).
 ### **工作流工具**
 
-在Y-Agent中，流程可以做工具，提供给其他流程使用。 [将流程设置为工具](TODO：URL).
+在Y-Agent中，流程可以做工具，提供给其他流程使用。 [将流程设置为工具](./wf_nodes/df_tool_node).
 ### **插件工具**
-为了便于和外部系统交换数据，提供了外部WebAPI转成插件的接口。 [将WebAPI作为工具](TODO：URL).
+为了便于和外部系统交换数据，提供了外部WebAPI转成插件的接口。 [将WebAPI作为工具](./wf_nodes/plugin_tool_node).
 
 ---
 ## 屏幕右侧
@@ -52,7 +52,7 @@ description: 为了帮您更快的理解Y-Agent框架的使用方法，需要您
 ### 工作空间：
 <include>./public/work_space.mdx</include>
 
-[变量可以存储的数据类型](TODO：URL).
+[变量可以存储的数据类型](./wf_nodes/model_node#变量存储).
 
 ### 开始节点
 开始节点，作为AI-Agent工作流的起点，负责加载用户输入数据，需要自定义输入变量（*防止没有变量的情况，user_input 作为默认变量*）。
@@ -112,15 +112,9 @@ description: 为了帮您更快的理解Y-Agent框架的使用方法，需要您
 ```python  
 command=|<|工具名称(参数名=参数值,参数名=参数值...)|>|
 ```
-系统内置的工具有：
-
-```python  
-command=|<|notify(message="向用户发送消息。")|>|
-command=|<|terminate(message="向用户发送消息并终止流程。")|>|
-command=|<|write_var(ids=[{{}}])|>| # 写变量
-command=|<|assignment(next_roles=[{"role":"角色1","message":"消息1"},{"role":"角色2","message":"消息2"}]) |>| # 选择下游角色 并分配任务 
-```
+<include>./public/sys_function.mdx</include>
 
 
 
-更多提示词使用方法和说明 请参考：[提示词编写指南](./prompt_guide.mdx).
+
+更多提示词使用方法和说明 请参考：[提示词编写指南](./prompt_guide).

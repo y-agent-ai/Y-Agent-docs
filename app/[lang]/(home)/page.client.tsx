@@ -135,11 +135,11 @@ export function WhyInteractive(props: {
 }) {
   const [active, setActive] = useState(0);
   const items = [
-    'Full-text Search',
-    'Design System & Tailwind CSS',
-    'Generate from TypeScript & OpenAPI',
-    'Interactive Examples',
-    'Automation & Server',
+    '使用简单高效.',
+    '快速分析测试',
+    '高级功能开放.',
+    '自支持模型训练.',
+    '自动化生产语料.',
   ];
 
   return (

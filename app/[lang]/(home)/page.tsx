@@ -93,7 +93,7 @@ function Architecture() {
         <p className="px-2 py-1 text-sm font-mono bg-fd-primary text-fd-primary-foreground font-bold w-fit mb-4">
           全流程 生命周期 管理
         </p>
-        <h2 className="text-2xl font-semibold mb-4">A breakable framework.</h2>
+        <h3 className="text-xl font-semibold mb-5">流程搭建-流程测试-日志分析-模型训练</h3>
         <p className="text-fd-muted-foreground mb-6">
           Fumadocs makes it easy to build beautiful docs, write content, and
           transform content into data for your React.js framework, from Next.js
@@ -285,25 +285,23 @@ function Highlights() {
         <MousePointer className="-ml-1 mt-8" />
       </div>
       <Highlight icon={TimerIcon} heading="灵活 & 快速.">
-        Powered by React Server Components, images optimized by default.
+        高度开放的 UI 工作流组件，支持 单智能体 多智能体 混排，同时开放了底层提示词修改功能。
       </Highlight>
       <Highlight icon={RocketIcon} heading="高效集成.">
-        Building documentation site with Next.js, React Router, or Tanstack
-        Start.
+        可以将原有的 IT 系统，快速接入到智能场景中，实现自动化、智能化。
       </Highlight>
       <Highlight icon={LayoutIcon} heading="测试 & 训练.">
-        Focus on user experience and accessibility.
+        集成了全面的测试功能，和定制的训练微调框架，包括预训练、微调、强化学习。
       </Highlight>
       <Highlight icon={ServerIcon} heading="日志追踪.">
-        Allowing seamless CMS integration and dynamic content integrated with
-        server.
+        友好直观的日志查看界面，可以快速分析问题，同时支持自定义的 自动化日志 分析。
       </Highlight>
       <Highlight icon={KeyboardIcon} heading="RAG.">
         Syntax highlighting on Shiki, Typescript Twoslash, OpenAPI docs
         generation, and more.
       </Highlight>
-      <Highlight icon={PersonStandingIcon} heading="用户支持.">
-        Advanced options for customising your theme in a comfortable way.
+      <Highlight icon={PersonStandingIcon} heading="领域数据生产.">
+        可以识别基础模型不懂的领域知识，并自动化进行数据采集、数据清洗、数据增强。
       </Highlight>
     </div>
   );
@@ -357,7 +355,7 @@ function Hero() {
         
       </h1>
       <p className="mb-8 text-fd-muted-foreground md:max-w-[80%] md:text-xl">
-        Y-Agent Studio 是一个面向开发人员的框架，灵活、高性能；支持测试、模型微调。<br />
+        Y-Agent Studio 是一个面向开发人员的框架，简单、灵活、高效；支持测试、模型微调。<br />
 
         可以快速集成到，现有的企业 IT 环境中。
       </p>
@@ -405,7 +403,7 @@ function Feedback() {
     <div className="relative border-x border-t pt-8 bg-fd-background">
       <div className="flex flex-row gap-6 justify-between px-6 mb-6 items-center">
         <p className="text-sm font-medium md:text-lg">
-          值得优秀团队和开发人员的信赖！
+          将 IT 资产快速接入 智能场景  ！
         </p>
       </div>
     </div>
