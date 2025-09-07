@@ -86,7 +86,7 @@ TODO:补图
 |     |     | .变量名称 |     | .变量名称 |
 |     | .output |    | 角色输出内容 | .output |
 |     | .工具名称 |     | 工具返回值 | .工具名称 |
-| get_roles_outputs() |     |     | 同时取多个角色的输出，并合并 | .get_roles_outputs(\[role1,role2...\],field_key) |
+| get_roles_outputs() |     |     | 同时取多个角色的输出，并合并到一个数组中，field_key为要提取的字段名称，可以留空 | .get_roles_outputs(\[role1,role2...\],field_key) |
 | exist() |     |     | 验证角色是否存在 | .exist('role') |
 
   </Accordion>
@@ -122,14 +122,14 @@ TODO:补图
 系统保留字段，集合里包含了系统默认的静态函数
 
 **获取系统时间：**
-```js
+```python
   当前时间是：{{sys.time()}}
 ```
 
 **判断变量是否null或者为空**
 
 is_null_or_empty() （包括数组长度为0的情况）
-```js
+```python
   {{if sys.is_null_or_empty(变量名) }}
     变量名是null或者为空
   {{else}}
@@ -141,10 +141,10 @@ is_null_or_empty() （包括数组长度为0的情况）
 #### space：
 **工作空间变量提取**
 
-```ts tab="sapce变量提取"
+```python tab="sapce变量提取"
   变量的值是:{{sys.space.变量名称}}
 ```
-```ts tab="~~space字典变量提取~~"
+```python tab="~~space字典变量提取~~"
 
   变量的值是:{{sys.space.变量名称.字典的key}}
   # 注意：为了简化操作，此方法停用
@@ -154,7 +154,7 @@ is_null_or_empty() （包括数组长度为0的情况）
 **知识库文档内容获取**
 get_document()，根据文档多个id提取对应内容
 
-```js
+```python
 {{sys.get_document(sys.space.ids)}}
 ```
 返回的是文档的标题和内容：文本形式
@@ -163,17 +163,17 @@ get_document()，根据文档多个id提取对应内容
 **聊天室消息提取函数**
 
 **提取聊天室对话文本内容：（常用）**
-```js
+```python
   {{sys.chat_room.get_talks("发送者","接收者").message}}
 ```
 返回的是聊天室对话内容
 ["你好","今日阳光明媚"]
 提取发送者为张三的全部消息：
-```js
+```python
   {{sys.chat_room.get_talks("张三","").message}}
 ```
 提取接收者为张三的一条消息：
-```js
+```python
   {{sys.chat_room.get_talks("","张三").message.first[1]}}
 ```
 
@@ -183,15 +183,15 @@ get_document()，根据文档多个id提取对应内容
 返回聊天室中所有消息，包括发送者、接收者、消息内容、发送时间、消息id。
 聊天室中消息字段：sender，receiver，message ,send_time,id
 
-```js tab="发送者为张三"
+```python tab="发送者为张三"
   {{sys.chat_room.get_talks("张三","").message}}
 ```
 
-```js tab="接收者为李四"
+```python tab="接收者为李四"
   {{sys.chat_room.get_talks("","李四").message}}
 ```
 
-```js tab="张三发给李四的消息"
+```python tab="张三发给李四的消息"
 {{sys.chat_room.get_talks("张三","李四").message}}
 ```
 
@@ -205,14 +205,14 @@ get_document()，根据文档多个id提取对应内容
 
 
 循环以上数据
-```js
+```python
 {% for item in sys.chat_room.get_talks() %} 
 {{item.from_role}} 对 {{item.to_role}} : {{item.message}}
 {% endfor %}
 ```
 
 【其他客服的回答】：
-```js
+```python
 {% if sys.chat_room.get_talks("参数客服","human")|length != 0 %}
 # 另一种写法 if sys.is_null_or_empty(sys.chat_room.get_talks("参数客服","human"))
 {{chat_room.get_talks("参数客服","human").message}}
@@ -222,16 +222,16 @@ get_document()，根据文档多个id提取对应内容
 ### role：
 
 **获取 开始/input 节点 用户输入：**
-```ts tab="默认"
+```python tab="默认"
   {{role.input.user_input}} 
 ```
-```ts tab="写法2"
+```python tab="写法2"
   {{role.开始.user_input}}  
   #input=开始
 ```
 
 **获取 开始/input 节点 自定义输入变量值：**
-```js
+```python
   {{role.input.自定义输入变量名称.二级变量名称.三级变量名称}}
 ```
 
@@ -239,50 +239,50 @@ get_document()，根据文档多个id提取对应内容
 用于判断角色有没有输出内容，防止直接调用出错的情况
 
 判断角色是否有输出内容，有输出内容返回true，没有输出内容返回false
-```js
+```python
 {% if role.exist("知识补充员")%}
 {% endif %}
 ```
 
 
 提取角色内【工具】返回值的内容，格式：
-```js
+```python
 {{role.角色名称.工具名称}}
 ```
 
 
 注意工具返回值的类型：
 知识库返回可循环的json列表，可以使用以下模板内容：
-```js
+```python
 {% for doc in role.文档查询.product_retrieve  %}
 {"id":"{{doc.id}}","title":"{{doc.title}}"}
 {%endfor%}
 
 ```
 知识库返回单个json对象格式：
-```js
+```python
   {"id":"xxxxxx","score":0.50,"title":"这个是知识标题","content":"知识内容markdown格式"}
 ```
 
 如果知识库返回的文本：
-```js
+```python
   {{role.文档查询.product_retrieve}} #文档查询为角色名
 ```
 
 **提取角色特殊的输出，如果角色没有执行任何工具，仅仅输出了一段文本，可以使用以下方式提取输出的内容**
-```js
+```python
   {{role.角色名称.output}}
 ```
 
 **提取角色特殊的输出，如果变量存储到了角色自身，可以使用以下格式提取**
-```js
+```python
   {{role.角色名称.output.变量名称}}
 ```
 
 
 
 其他案例
-```js
+```python
 # 判断变量是否null或者为空（包括数组长度为0的情况）
 {% if sys.is_null_or_empty(变量名) %}
 {% if space.ids|length == 0 or space.get_document(space.ids)|length ==0 %}
@@ -293,7 +293,7 @@ get_document()，根据文档多个id提取对应内容
 
 ### 执行器
 直接执行内部函数：
-```js
+```python
 command=|<|notify(message="你好，这是自动回复，但是流程还在运行")|>|
 command=|<|terminate(message="你好，这是自动回复，收到回复后流程终止运行")|>|
 command=|<|write_var(ids=[{{}}])|>|
@@ -307,7 +307,7 @@ command=|<|send_message(receiver="填写角色名称",message="填写消息的�
 
 - terminate:给用户发送结束消息的函数，发送后流程不在继续执行下游节点：
 
-```js
+```python
 notify 工具介绍：这个工具可以把答案发送给用户
 notify 工具指令：command=|<|notify(message="填写回答的内容") |>|    
 
@@ -315,13 +315,13 @@ terminate 工具介绍：和notify工具类似，除此之外，此工具触发�
 terminate 工具指令：command=|<|terminate(message="填写回答的内容") |>|    
 ```
 - 手动触发下游角色执行的函数，指定某个下游角色执行后续流程：
-```js
+```python
 assignment 工具介绍：用于指定某个下游角色执行后续流程。
 assignment 工具指令：command=|<|assignment(next_roles=[{"role":"角色1","message":"消息1"},{"role":"角色2","message":"消息2"}]) |>|  
 ```
 
 - 给其他角色发送消息的函数，仅向聊天室给指定用户发送了一条消息：** 
-```js
+```python
 send_message 工具介绍：用于向指定角色发送消息。
 send_message 工具指令：command=|<| send_message(receiver="填写角色名称",message="填写消息的内容") |>|  
 ```
@@ -329,7 +329,9 @@ send_message 工具指令：command=|<| send_message(receiver="填写角色名�
 ### 测试相关提示词
 为了方便测试，可以使用大模型为测试结果打分，此时需要编写提示词模板，需要用到以下变量：
 
-```js
+```python
+## 本次测试的输入内容
+
 {{input}}
 
 ## 参考答案
@@ -351,7 +353,7 @@ send_message 工具指令：command=|<| send_message(receiver="填写角色名�
 
 ReAct推理提示词：在ReAct推理开启后可编辑
 
-```
+```python
 {
 "prompt_step_part":"以下是推理过程：\n\n{step}\n\n",
 "prompt_think_part":"第{react_times}轮推理过程：\n\n{think}\n【工具执行结果】：{return_value}\n\n",
@@ -362,14 +364,14 @@ ReAct推理提示词：在ReAct推理开启后可编辑
 
 自动选择下游角色提示词：在 下游角色 自动选择 开启后可编辑
 
-```
+```python
 assignment 工具介绍：用于从“可选角色列表”中筛选出适宜的角色，进行处理下一步任务。
 assignment 工具指令：command=|<|assignment(next_roles=[{"role":"填写选择的角色","message":"填写角色的任务内容"},{"role":"填写选择的角色","message":"填写角色的任务内容"}])|>|
 ```
 
 存储变量提示词
 
-```
+```python
 write_var 工具介绍：用于将答案/结果/输出内容存储到特殊的位置。
 write_var 工具指令：command=|<|write_var({variables_json})|>|
 ```

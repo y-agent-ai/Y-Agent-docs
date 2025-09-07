@@ -360,7 +360,7 @@ function Hero() {
         可以快速集成到，现有的企业 IT 环境中。
       </p>
       <div className="inline-flex items-center gap-3 max-md:mx-auto">
-        <Link href="/docs">快速开始.</Link>
+        <Link href="/docs">快速开始 →</Link>
       </div>
       <PreviewImages />
     </div>
@@ -449,9 +449,9 @@ Hello World
         </div>
       </div>
       <div className="col-span-full flex flex-col items-center gap-2 border-l border-t px-6 py-16 text-center">
-        <h3 className="text-2xl font-semibold">云镜像</h3>
+        <h3 className="text-2xl font-semibold">完整开源</h3>
         <p className="text-fd-muted-foreground">
-          镜像已上传至以下平台，您可以从平台创建。
+          Y-Agent 框架 完整开源，可商用，不区分社区版 商用版，下载后意味着您可以获得全部功能。
         </p>
 
         <div className="mt-4 flex flex-row flex-wrap items-center gap-8">

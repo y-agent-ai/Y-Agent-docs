@@ -23,5 +23,21 @@ description: 一些日常使用上的问题
 TODO：补充案例
   </Accordion>
 
+  <Accordion id="faq-rerank" title="为什么没有联网搜索工具？">
+  建议使用在线模型的联网搜索功能，因为主流的在线模型API都提供联网搜素+总结功能，
+  比起自己搭建一个网页分析流程，省时省力效果还好。
+
+  当软也可以通过手动添加 WebAPI工具，自己集成搜索引擎提供的搜索API，实现联网搜索功能。
+  </Accordion>
+
+  
+  <Accordion id="faq-rerank" title="获取多个上游节点的输出？">
+  可以使用`get_roles_outputs`函数获取多个角色的输出。
+  ```js
+  {{role.get_roles_outputs(['角色1','角色2','角色3'])}}
+  ```
+  get_roles_outputs：同时取多个角色的输出，并合并到一个数组中，field_key为要提取的字段名称，可以留空，留空时默认提取output字段。
+  </Accordion>
+
 </Accordions>
 

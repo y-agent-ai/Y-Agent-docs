@@ -8,6 +8,7 @@
         "batch_node",
         "df_tool_node",
         "wf_tool_node",
-        "plugin_tool_node"
+        "plugin_tool_node",
+        "tool_setting"
     ]
 }
