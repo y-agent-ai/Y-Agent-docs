@@ -1,9 +1,9 @@
 {
-    "title": "训练",
+    "title": "语料",
     "description": "yagent",
     "defaultOpen": true,
     "pages": [
-        "concept",
+        "add_train",
         "generic_process",
         "wf_nodes",
         "prompt_guide",
