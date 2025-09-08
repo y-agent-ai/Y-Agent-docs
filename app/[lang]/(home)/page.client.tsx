@@ -320,6 +320,10 @@ export function PreviewImages() {
       image: OpenAPIImg,
       name: 'OpenAPI',
     },
+    {
+      image: OpenAPIImg,
+      name: '首页banner',
+    },
   ];
 
   return (
