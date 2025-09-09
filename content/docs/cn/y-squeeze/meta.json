@@ -1,7 +1,7 @@
 {
     "title": "说明文档",
-    "description": "Training 教程",
-    "icon": "Airplay",
+    "description": "Y-Squeeze 教程",
+    "icon": "ArrowBigDown",
     "pages": [
         "introduction",
         "advanced"
