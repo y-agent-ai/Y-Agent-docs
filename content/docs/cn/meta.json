@@ -11,7 +11,9 @@
         "y-agent",
         "---Y-Training---",
         "y-training",
-        "---Y-DocSqueeze---",
-        "y-docSqueeze"
+        "---Y-Squeeze---",
+        "y-squeeze",
+        "---Y-Retrieve---",
+        "y-retrieve"
     ]
   }
