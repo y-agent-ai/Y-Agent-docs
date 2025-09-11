@@ -10,13 +10,13 @@ icon: FastForward
 
 ## 配置
 
-<Banner changeLayout={false}>Hello World</Banner>
 
 ![Image](../imgs/create_flow_dialog.png)
 
-## demo
+<Banner changeLayout={false}>以下作为入门例子，帮助您快速上手</Banner>
+## 案例教程
 接下来我们将从简单的例子开始，一些复杂的流程也仅仅是这些简单例子的组合
-### 1、接受和发送消息
+### 例子1、接受和发送消息
 作为第一课，我们先构建一个非常简单的流程，接受用户输入，然后发送消息给用户。
 
 
@@ -62,7 +62,7 @@ icon: FastForward
 
 </Accordions>
 
-### 2、简单的真心话游戏
+### 例子2、简单的真心话游戏
 真心话游戏的规则：有两个玩家，`玩家A` 和 `玩家B` 玩石头剪刀布，胜利者提问失败者回答问题，然后下一轮。
 
 为了流程更加清晰，我们引入一个额外的角色： `裁判`
@@ -93,7 +93,7 @@ icon: FastForward
 
 </Accordions>
 
-### 3、为角色配置工具
+### 例子3、为角色配置工具
 
 上面学习了如何创建角色，并进行角色间合作完成任务，接下来我们学习如何让角色使用工具。
 <Accordions>
@@ -117,7 +117,7 @@ icon: FastForward
   </Accordion>
 </Accordions>
 
-### 4、使用ReAct
+### 例子4、使用ReAct
 ReAct（多轮推理）是Y-Agent框架的内置工具，适用于多跳问题，例如：541除以154 和 741除以211 谁更大？
 <Accordions>
   <Accordion title="使用ReAct">
@@ -129,19 +129,22 @@ ReAct（多轮推理）是Y-Agent框架的内置工具，适用于多跳问题�
   </Accordion>
 </Accordions>
 
-### 5、使用变量
+### 例子5、使用变量
 
-通过上面的学习，您已经掌握了基本的流程，接下来，我们开始使用变量。 相关知识：[工作空间变量.](TODO：url) [角色变量.](TODO：url) 
+通过上面的学习，您已经掌握了基本的流程，接下来，我们开始使用变量。 
+相关知识：[工作空间变量.](/docs/y-agent/work_flow/concept#工作空间) [角色变量.](/docs/y-agent/work_flow/generic_process#role_output_var) 
 
-### 6、工具和角色节点混排
+### 例子6、工具和角色节点混排
 
 这一节里，我们主要讲述如果将工具作为节点，并且设置固定参数、手工指定变量作为参数
 
-### 7、接入外部WebApi
+### 例子7、接入外部 WebApi 和 MCP
 
-本框架可以方便的与您原有的系统集成，只需要将您的接口作为WebApi，并返回json数据即可。相关知识：[接入外部系统.](TODO：url)
+本框架可以方便的与您原有的系统集成，只需要将您的接口作为WebApi，并返回json数据即可。
 
-### 8、进阶知识
+相关知识：[接入外部系统.](/docs/y-agent/work_flow/wf_nodes/webapi_tool_node) [接入MCP.](/docs/y-agent/work_flow/wf_nodes/mcp_tool_node)
+
+### 例子8、进阶知识
 
 分身、聊天室、执行器、提示词编写、编辑系统内置默认提示词、
 
@@ -153,7 +156,7 @@ ReAct（多轮推理）是Y-Agent框架的内置工具，适用于多跳问题�
 
 [系统设置](/docs/y-agent/sys_setting).
 
-高级知识：创建自动化流程分析工具、自动添加测试和训练语料、自动添加文档知识库
+高级知识：创建自动化流程分析工具、自动添加测试和训练语料、自动添加文档知识库 TODO：
 
 
 
