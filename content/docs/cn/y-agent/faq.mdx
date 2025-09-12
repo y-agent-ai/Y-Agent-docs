@@ -39,5 +39,19 @@ TODO：补充案例
   get_roles_outputs：同时取多个角色的输出，并合并到一个数组中，field_key为要提取的字段名称，可以留空，留空时默认提取output字段。
   </Accordion>
 
+  
+  <Accordion  title="使用大模型的流式输出？">
+  由于模型使用工具的机制是完整输出后，再解析，所有目前不支持流式输出。
+  
+  </Accordion>
+  
+  <Accordion  title="如何获取批处理内的角色名称？">
+  批处理内的角色是按照一定格式拼写的，可以通过以下方式获取角色名称：
+  ```python
+  command=|<|assignment(next_roles=[{"role":"角色名_batch_{{batch.index}}","message":"做点什么"}])|>|
+  ```
+  其中`角色名_batch_{{batch.index}}`即为角色名称。
+  </Accordion>
+
 </Accordions>
 

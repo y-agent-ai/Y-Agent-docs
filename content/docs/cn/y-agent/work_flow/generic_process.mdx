@@ -13,14 +13,18 @@ description: 按照一下的步骤，可以对如何创建流程，以及如何�
 为您的流程起一个名称（必填），仅可以使用中文英文和下划线，不可以使用特殊字符和空格。
 - #### 是否工具
 
-启用后可以作为工具，供其他流程调用。 [将流程作为工具](TODO：URL).
+启用后可以作为工具，供其他流程调用。 [将流程作为工具](/work_flow/wf_nodes/wf_tool_node).
+
+
+- #### 是否允许分享
+创建好的流程，可以通过网页分享给别人调用，也可以通过API调用。[如何分享流程](/docs/y-agent/work_flow/share_flow).
 
 - #### 是否启用日志
 
 启用后，在流程运行的时候，会自动记录流程日志，可以通过流程日志菜单查看。
 
 > 注意：在通过API调用流程的时候，本开关仅作为 默认设置 ，如果API调用的时候，指定 日志参数 为开启，则依然会记录日志。
- [参考API调用流程](TODO：URL).
+ [参考API调用流程](/docs/y-agent/work_flow/share_flow#通过代码调用流程).
 
 - #### 流程图介绍
 
@@ -166,12 +170,15 @@ ReAct推理效果：TODO：效果图
 </Accordions>
 
 
-其他：`工具` `工作流工具` 和 `插件工具` TODO：说明
+其他：[内置工具](/docs/y-agent/work_flow/wf_nodes/df_tool_node). [工作流工具](/docs/y-agent/work_flow/wf_nodes/wf_tool_node). 
+[MCP工具](/docs/y-agent/work_flow/wf_nodes/mcp_tool_node).和 [插件工具](/docs/y-agent/work_flow/wf_nodes/webapi_tool_node).
 
 #### 连接各个节点
 
 将鼠标移动到节点的右侧边缘，光标会变成十字形，按住左键拖动到另一个节点的左侧边缘即可建立连接。
-节点之间可以循环连接，参考：TODO：URL
+节点之间可以循环连接，如下图所示：
+
+![](../../imgs/flow_chart.png)
 
 ### 2.3 编写提示词
 提示词统一由提示词模块管理，这样的好处是：
@@ -209,9 +216,9 @@ ReAct推理效果：TODO：效果图
 
 ## 第四步、分享流程
 
-保存好流程，进入流程管理界面，点击 流程右下角 TODO：ICON **分享** 按钮，即可分享流程。
+保存好流程，进入流程管理界面，点击 流程右下角 **分享** 按钮，即可分享流程。
 
-支持 网页地址分享 和 WebAPi调用。 [将流程分享为WebAPi](TODO：URL).
+支持 网页地址分享 和 WebAPi调用。 [将流程分享为WebAPi](/docs/y-agent/work_flow/share_flow).
 
 
 <Accordions>
@@ -224,7 +231,7 @@ ReAct推理效果：TODO：效果图
 
 导出流程的时候，系统会把流程所引用的 `插件工具` `流程工具` `提示词` 一起打包导出。
 
-具体规则，请参考：TODO：URL
+具体规则，请参考：[流程的导入导出](/docs/y-agent/work_flow/import_export_wf).
 
   </Accordion>
 </Accordions>

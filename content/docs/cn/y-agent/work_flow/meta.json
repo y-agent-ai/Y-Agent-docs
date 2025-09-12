@@ -9,7 +9,8 @@
         "prompt_guide",
         "flow_log",
         "debug_flow",
-        "release_flow",
+        "share_flow",
+        "import_export_wf",
         "model_setting",
         "tips",
         "about_error"
