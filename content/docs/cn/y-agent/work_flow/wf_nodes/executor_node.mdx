@@ -17,26 +17,37 @@ description: 执行器节点的详细配置和说明
 
 <include>../public/sys_function.mdx</include>
 ## 执行器使用的案例：
-TODO：补充案例
 <Accordions>
   <Accordion title="向用户输出消息">
-    折叠展示 title="折叠展示"，id 代表链接地址
-    默认展开 orientation="vertical"  
+    ```python
+    command=|<|notify(message="你好，欢迎使用！")|>|
+    # 或者 在message中编写模板引用其他节点信息
+    command=|<|notify(message="开始节点的user_input参数：{{role.input.user_input}}")|>|
+    # 也可以使用 terminate 函数
+    command=|<|terminate(message="你好，本消息发送后，工作流将终止（正在执行的节点会执行完毕，未执行的节点将被取消）")|>|
+    ```
+    
   </Accordion>
   <Accordion title="直接写入工作空间变量">
-    折叠展示 title="折叠展示"，id 代表链接地址
-    默认展开 orientation="vertical"  
+    ```python
+    # 假设工作空间存在变量 ids
+    command=|<|write_var(ids=['id1','id2'])|>| # 写变量
+    ```
   </Accordion>
   <Accordion title="根据固定代码逻辑，执行系统函数">
-    折叠展示 title="折叠展示"，id 代表链接地址
-    默认展开 orientation="vertical"  
+   ```python
+   # 此处为Jinja模板代码
+    {% if role.input.user_input == 'admin' %}   
+    command=|<|write_var(ids=['id1','id2'])|>| # 写变量
+    {% else %}
+    command=|<|notify(message="你好，欢迎使用！")|>| # 通知用户
+    {% endif %}
+    ```
   </Accordion>
   <Accordion title="通过代码逻辑，选择下游角色节点">
-    折叠展示 title="折叠展示"，id 代表链接地址
-    默认展开 orientation="vertical"  
-  </Accordion>
-  <Accordion title="折叠展示">
-    折叠展示 title="折叠展示"，id 代表链接地址
-    默认展开 orientation="vertical"  
+    ```python
+    # 假设本节点后存在 角色1 和 角色2 两个节点
+    command=|<|assignment(next_roles=[{"role":"角色1","message":"你负责回答用户问题"}])|>|
+    ```
   </Accordion>
 </Accordions>

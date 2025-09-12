@@ -11,7 +11,6 @@ icon: FastForward
 ## 配置
 
 
-![Image](../imgs/create_flow_dialog.png)
 
 <Banner changeLayout={false}>以下作为入门例子，帮助您快速上手</Banner>
 ## 案例教程
@@ -28,16 +27,25 @@ icon: FastForward
     创建一个流程
     </Step>
     <Step>
-    添加一个大模型节点
+    添加一个大模型节点：选择模型、填写模型描述
     </Step>
     <Step>
     添加连接开始节点和模型节点
+    
     </Step>
     <Step>
-    为模型节点填写提示词
+    为模型节点填写提示词：
+      ```python
+      你是一个应用助手，请回答用户问题：
+      {{role.input.user_input}}
+      ```
+    最终效果如下：
+    ![](./work_flow/imgs/demo1.1-1.png)
     </Step>
     <Step>
-    运行一下
+    点击 **保存并运行** 按钮，在试运行界面，输入 `你好` 并点击 **运行** 按钮，可以看到运行日志。
+    ![](./work_flow/imgs/demo1.1-2.png)
+    流程完整运行一次后，调试功能才可以使用，调试分为：模型的运行一次、提示词的运行一次。 参考：[调试模型.](/docs/y-agent/work_flow/debug_flow)
     </Step>
     </Steps>
   </Accordion>
@@ -46,7 +54,10 @@ icon: FastForward
 
     <Steps>
     <Step>
-    创建一个流程
+    在上面流程中添加一个大模型节点，然后将 大模型_1 连接到 大模型_2。
+    </Step>
+    <Step>
+    为 大模型_2 编写提示词和设置模型。
     </Step>
     </Steps>
   </Accordion>
