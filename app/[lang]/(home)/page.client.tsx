@@ -310,15 +310,15 @@ export function PreviewImages() {
   const previews = [
     {
       image: MainImg,
-      name: 'Docs',
+      name: 'Studio',
     },
     {
       image: NotebookImg,
-      name: 'Notebook',
+      name: 'Y-Agent',
     },
     {
       image: OpenAPIImg,
-      name: 'OpenAPI',
+      name: 'Y-Trainer',
     },
     {
       image: OpenAPIImg,

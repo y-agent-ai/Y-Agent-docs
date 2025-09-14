@@ -5,6 +5,8 @@ description: aaa
 
 TODO：官网 图片参考 https://www.trae.cn/
 
+# 字体
+
 **加粗**,
 斜体
 *斜体*
@@ -28,6 +30,26 @@ _斜体_
 
 > 引用
 
+
+注意
+
+```
+<Callout>注意</Callout>
+
+<Callout title="Title">Hello World</Callout>
+<Callout title="Title" type="error">
+  Hello World
+</Callout>
+```
+
+<Callout>注意</Callout>
+
+<Callout title="Title">Hello World</Callout>
+<Callout title="Title" type="error">
+  Hello World
+</Callout>
+
+[My Link](https://github.github.com/gfm)
 ```js
 
 **加粗**,
@@ -57,32 +79,66 @@ _斜体_
 [文档](TODO：URL).
 
 ```
+
+<Banner id="hello-world">Hello World</Banner>
+<Banner variant="rainbow">Hello World</Banner>
+
+```js
+
+<Banner id="hello-world">Hello World</Banner>
+<Banner variant="rainbow">Hello World</Banner>
+<Banner changeLayout={false}>Hello World</Banner>
+```
+# 图片
 插入图片
 ``` js
 ![alt](/imgs/cn/work_flow.png)
 ```
 
-注意
-
-```
-<Callout>注意</Callout>
-
-<Callout title="Title">Hello World</Callout>
-<Callout title="Title" type="error">
-  Hello World
-</Callout>
+插入Icon
+<pre icon="<svg />">...</pre>
+```js
+{<CirclePlay className="text-blue-300" />} 
 ```
 
-<Callout>注意</Callout>
+插入图片
 
-<Callout title="Title">Hello World</Callout>
-<Callout title="Title" type="error">
-  Hello World
-</Callout>
+<img src="./imgs/image.png" alt="icon" />
+![alt 文本](./imgs/flow_chart.png)
+带背景
+<Wrapper>
+![彩虹背景](./imgs/flow_chart.png)
+</Wrapper>
 
-[My Link](https://github.github.com/gfm)
+按照图片原始大小插入
+```html
+<div className="not-prose grid gap-2 *:border max-sm:*:last:hidden sm:grid-cols-[2fr_1fr]">
 
-卡片
+<>![Nav](./imgs/image.png)</>
+
+<>![Banner](./imgs/image.png)</>  第二张只占1/4
+
+</div>
+图片居中显示
+<div className='flex justify-center items-center *:max-w-[200px] bg-gradient-to-br from-fd-primary/10 rounded-xl border'>
+
+    ![Sidebar](/docs/sidebar.png)
+
+</div>
+```
+
+<div className="not-prose grid gap-2 *:border max-sm:*:last:hidden sm:grid-cols-[2fr_1fr]">
+
+<>![Nav](./imgs/image.png)</>
+
+<>![Banner](./imgs/image.png)</>
+
+</div>
+
+
+
+
+## 卡片
 <Cards>
   <Card title="sys." href="/docs/y-agent/work_flow/prompt_guide#系统函数-sys">触发系统函数提示</Card>
   <Card title="role." icon={<HomeIcon />}  > aaaa</Card>
@@ -133,7 +189,7 @@ _斜体_
 页内导航
 href="/docs/y-agent/work_flow/prompt_guide#系统函数-sys"
 
-页签
+## 页签
 
 
 ```js tab="提取张三发送的消息"
@@ -149,11 +205,6 @@ href="/docs/y-agent/work_flow/prompt_guide#系统函数-sys"
 markdown表格里面 使用特殊字符例如 |  {，需要加\转义，\| \{
 
 ```
-引用
-```js 
-<include>./test/test.mdx</include>
-```
-
 
 
 <Tabs items={["doc", "meta", 'docs']}>
@@ -210,6 +261,12 @@ export const docs = defineDocs({
 </Tabs>
 
 
+## 引用其他文件
+```js 
+<include>./test/test.mdx</include>
+```
+
+
 高级用法：
 https://fumadocs.dev/docs/ui/layouts/page#table-of-contents
 
@@ -217,20 +274,6 @@ https://fumadocs.dev/docs/ui/layouts/page#table-of-contents
 设置起始页位置、GitHub Edit、favicon.svg徽标
 
 
-<Banner id="hello-world">Hello World</Banner>
-<Banner variant="rainbow">Hello World</Banner>
-
-```js
-
-<Banner id="hello-world">Hello World</Banner>
-<Banner variant="rainbow">Hello World</Banner>
-<Banner changeLayout={false}>Hello World</Banner>
-```
-插入Icon
-
-```js
-{<CirclePlay className="text-blue-300" />} 
-```
 
 网站icon徽标的存放目录：
 ```

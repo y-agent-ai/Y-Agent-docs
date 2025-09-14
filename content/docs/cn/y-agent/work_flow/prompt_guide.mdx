@@ -8,7 +8,11 @@ description: 为了帮您更快的理解Y-Agent框架的使用方法，需要您
 
 ## 提示词的构成
 提示词模板与系统内置提示词。
-TODO:补图
+
+<div className='flex justify-center items-center *:max-w-[200px] bg-gradient-to-br from-fd-primary/10 rounded-xl border'>
+    ![Sidebar](./imgs/auto_prompt_demo.png)
+</div>
+
 - **提示词模板**：在此区域，用户可以根据具体需求，自主编写指导大模型执行任务的指令。用户可以利用系统提供的各种模板格式进行填写，系统将自动识别并替换相应的内容，以实现个性化的任务处理。这一设计极大地提升了大模型节点的灵活性和用户操作的便捷性。
 - **系统内置提示词**：这一部分涵盖了丰富的功能提示词，包括但不限于工具调用、选择下游流程、变量存储、React推理以及任务分身等操作。这些提示词是固定的，由系统程序预先设定，确保了流程的稳定性和可靠性，用户无法对其进行编辑。
 
@@ -100,7 +104,7 @@ TODO:补图
   
 | 以下属于代码块提示 |     | 提示 | 插入内容 |
 | --- | --- | --- | --- |
-| send_message |     | 向聊天室发送消息 | command=\|\<\|notify(receiver="填写角色名称",message="填写消息的内容") \|\>\| |
+| send_message |     | 向聊天室发送消息 | command=\|\<\|send_message(receiver="填写角色名称",message="填写消息的内容") \|\>\| |
 | notify |     | 向用户发送消息（发送完流程继续运行） | command=\|\<\|notify(message="填写消息的内容")\|\>\| |
 | terminate |     | 向用户发送消息（发送完流程终止） | command=\|\<\|terminate(message="向用户发消息此处可以填写固定值或者变量")\|>\| |
 | write_var |     | 写入space工作空间环境变量 | command=\|\<\|write_var(参数名=值,参数名=值)\|\>\| |
@@ -305,7 +309,7 @@ command=|<|send_message(receiver="填写角色名称",message="填写消息的�
 
 - notify:给用户发送消息的函数，发送后流程继续执行： 
 
-- terminate:给用户发送结束消息的函数，发送后流程不在继续执行下游节点：
+- terminate:给用户发送结束消息的函数，发送后流程不在继续执行未开始的节点：
 
 ```python
 notify 工具介绍：这个工具可以把答案发送给用户
@@ -361,6 +365,7 @@ ReAct推理提示词：在ReAct推理开启后可编辑
 "prompt_end_guide_part":"请停止推理查询，使用以上信息回答问题，按照以下格式输出：\n【思考】：填写你分析的问题答案\n【工具指令】：填写最终回答工具指令，工具指令必须以\"command=|<|\"开始，以\"|>|\"结束\n"
 }
 ```
+> 注意：里面的关键字，例如，`prompt_step_part` `{step}` 还有JSON格式，不要改动，否则会导致系统报错。
 
 自动选择下游角色提示词：在 下游角色 自动选择 开启后可编辑
 

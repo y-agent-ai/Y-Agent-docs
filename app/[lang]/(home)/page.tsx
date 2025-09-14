@@ -91,9 +91,9 @@ function Architecture() {
     <div className="flex flex-col gap-4 border-x border-t p-8 md:px-12 lg:flex-row">
       <div className="text-start">
         <p className="px-2 py-1 text-sm font-mono bg-fd-primary text-fd-primary-foreground font-bold w-fit mb-4">
-          全流程 生命周期 管理
+          完整 生命周期 管理
         </p>
-        <h3 className="text-xl font-semibold mb-5">流程搭建-流程测试-日志分析-模型训练</h3>
+        <h3 className="text-xl font-semibold mb-5">流程搭建 - 流程测试 - 日志分析 - 模型训练</h3>
         <p className="text-fd-muted-foreground mb-6">
           Fumadocs makes it easy to build beautiful docs, write content, and
           transform content into data for your React.js framework, from Next.js

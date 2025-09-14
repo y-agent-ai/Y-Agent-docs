@@ -13,17 +13,20 @@ description: 一些日常使用上的问题
 
     正确的方式是，再embbeding召回的文档中，再次通过模型进行判断，只选出对回答问题有用的文档。
   </Accordion>
-  <Accordion id="faq-rerank" title="如何编写大模型的system提示词？">
+  <Accordion  title="如何编写大模型的system提示词？">
     本系统不支持system提示词编写功能，主要原因是：
 
     实际使用的时候，system提示词可以直接写在提示内，效果上和单独设置没有什么区别。
   </Accordion>
   
-  <Accordion id="faq-rerank" title="如何在流程结束后输出json而不是纯文本？">
-TODO：补充案例
+  <Accordion id="faq-model-json" title="如何在流程结束后输出json而不是纯文本？">
+简单的json，可以由模型直接使用 notify 工具输出。
+
+复杂的json建议通过模型输出参数，在然后接一个执行器节点。通过notify工具进行转换。
+![alt](./work_flow/imgs/faq-model-json.png)
   </Accordion>
 
-  <Accordion id="faq-rerank" title="为什么没有联网搜索工具？">
+  <Accordion title="为什么没有联网搜索工具？">
   建议使用在线模型的联网搜索功能，因为主流的在线模型API都提供联网搜素+总结功能，
   比起自己搭建一个网页分析流程，省时省力效果还好。
 
@@ -31,7 +34,7 @@ TODO：补充案例
   </Accordion>
 
   
-  <Accordion id="faq-rerank" title="获取多个上游节点的输出？">
+  <Accordion title="获取多个上游节点的输出？">
   可以使用`get_roles_outputs`函数获取多个角色的输出。
   ```js
   {{role.get_roles_outputs(['角色1','角色2','角色3'])}}
@@ -52,6 +55,15 @@ TODO：补充案例
   ```
   其中`角色名_batch_{{batch.index}}`即为角色名称。
   </Accordion>
+
+  <Accordion  title="如果模型输出格式总是错误，怎么办？">
+  有时候模型经常会遗漏 `command=|<|` 和 `|>|` 导致格式错误，导致指令无法解析。
+
+  例如：输出 `command=|` `||` 等情况。
+
+  碰到这种问题，请加上提示词 `注意：工具指令不可篡改，不可遗漏，必须以command=|<|开始，以|>|结束。` 。
+  </Accordion>
+
 
 </Accordions>
 
