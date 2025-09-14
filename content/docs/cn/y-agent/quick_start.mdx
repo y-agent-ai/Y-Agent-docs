@@ -12,7 +12,7 @@ icon: FastForward
 
 
 
-<Banner changeLayout={false}>以下作为入门例子，帮助您快速上手</Banner>
+<Banner changeLayout={false}>入门例子，帮助您快速上手</Banner>
 ## 案例教程
 接下来我们将从简单的例子开始，一些复杂的流程也仅仅是这些简单例子的组合
 ### 例子1、接受和发送消息
@@ -20,7 +20,7 @@ icon: FastForward
 
 
 <Accordions>
-  <Accordion title="创建一个最简单的流程">
+  <Accordion title="1.1 创建一个最简单的流程">
 
     <Steps>
     <Step>
@@ -50,14 +50,54 @@ icon: FastForward
     </Steps>
   </Accordion>
 
-  <Accordion title="接下来我们尝试再添加一个角色 !">
+  <Accordion title="1.2 接下修改一下提示词">
+
+    <Steps>
+    <Step>
+    ```python
+你是一个应用助手，请回答用户问题：
+{{role.input.user_input}}
+
+注意：工具指令不可篡改，不可遗漏，必须以command=|<|开始，以|>|结束。
+回答问题要使用 notify 工具
+notify 工具介绍：用于将结果/回答发送给用户
+notify 工具指令：command=|<|notify(message="回答用户问题")|>|
+
+    ```
+    </Step>
+    <Step>
+      点击 **保存并运行** 按钮，在试运行界面，输入 `你好` 
+    ![](./work_flow/imgs/demo1.1-3.png)
+    > notify 工具是用来向流程调用者发送消息的，只有显式的调用notify工具，用户才能收到消息。同样，如果流程作为子流程、WebAPI等被调用的时候，
+    也需要显式的调用notify工具。
+    </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="1.3 接下来我们尝试再添加一个角色 !">
 
     <Steps>
     <Step>
     在上面流程中添加一个大模型节点，然后将 大模型_1 连接到 大模型_2。
     </Step>
     <Step>
-    为 大模型_2 编写提示词和设置模型。
+    为 大模型_2 编写提示词和设置模型。    
+  ```python
+你是一个应用助手，请回答用户问题。
+用户的问题是：{{role.input.user_input}}
+
+注意：回答问题要使用 notify 工具，用“我是2号助理”作为开头
+notify 工具介绍：用于将结果/回答发送给用户
+notify 工具指令：command=|<|notify(message="用“我是2号助理”作为开头，回答用户问题")|>|
+
+注意：工具指令不可篡改，不可遗漏，必须以command=|<|开始，以|>|结束。
+  ```
+    ![alt](./work_flow/imgs/demo1.3-1.png)
+    </Step>
+
+    <Step>
+    同样，输入 `你好` 运行测试。
+    ![](./work_flow/imgs/demo1.3-2.png)
+
     </Step>
     </Steps>
   </Accordion>
@@ -66,12 +106,60 @@ icon: FastForward
 
     <Steps>
     <Step>
-    修改第一个角色的提示词
+    修改第一个角色的提示词：
+  ```python
+你是一个应用助手，请回答用户问题：
+{{role.input.user_input}}
+
+注意：工具指令不可篡改，不可遗漏，必须以command=|<|开始，以|>|结束。
+回答问题要使用 terminate 工具
+terminate 工具介绍：用于将结果/回答发送给用户
+terminate 工具指令：command=|<|terminate(message="回答用户问题,注意要友好简洁，通俗易懂")|>|
+  ```
+    </Step>
+    <Step>
+    同样，输入 `你好` 运行测试。
+    ![](./work_flow/imgs/demo1.3-3.png)
+
     </Step>
     </Steps>
   </Accordion>
+  <Accordion title="1.4 不想在提示词里使用 `notify` 或者 `terminate` ？">
+  <Steps>
+    <Step>
+    如果你觉得这种向流程发送消息的方式不好理解，那么你可以在 添加一个 触发器节点：
+
+    同样先将提示词改回最开始的样子：
+
+  ```python
+
+        你是一个应用助手，请回答用户问题：
+        {{role.input.user_input}}
+
+  ```
+    </Step>
+    <Step>
+      然后，增加一个执行器节点，并连线：
+      
+      执行器的提示词：
+  ```python
+      command=|<|notify(message="{{role.大模型_1.output}}")|>|
+  ```
+  > 注意：这里的 `{{role.大模型_1.output}}` 使用了Jinja模板，可以将模型的输出作为参数传入到提示词中。[jinja官方文档](https://jinja.palletsprojects.com/en/stable/templates/).
+    
+    ![](./work_flow/imgs/demo1.4.png)
+
+    </Step>
+    <Step>
+      然后，测试运行一下，依然可以 发送消息 给用户。
+    </Step>
+  </Steps> 
+  </Accordion>
 
 </Accordions>
+
+
+> 如果模型输出格式错误，请加上提示词 `注意：工具指令不可篡改，不可遗漏，必须以command=|<|开始，以|>|结束。` 。
 
 ### 例子2、简单的真心话游戏
 真心话游戏的规则：有两个玩家，`玩家A` 和 `玩家B` 玩石头剪刀布，胜利者提问失败者回答问题，然后下一轮。
@@ -103,26 +191,110 @@ icon: FastForward
   </Accordion>
 
 </Accordions>
+<Accordions>
+  <Accordion title="接下来一步一步实现" id="gamedemo" >
+
+    <Steps>
+    <Step>
+    首先制作流程图，并添加三个节点： 裁判 玩家A 玩家B
+    </Step>
+    <Step>
+    然后连接节点：开始→裁判→玩家A、玩家B→裁判。注意这是一个循环连接，如图：
+    ![](./work_flow/imgs/demo2-1.png)
+    
+    </Step>
+    <Step>
+    由于出现了循环连接，为了防止死循环，需要设置运行次数限制：（仅需要裁判节点即可）
+    ![](./work_flow/imgs/demo2-2.png)
+    </Step>
+    <Step>
+    编写提示词：
+  ```python tab="裁判"
+    裁判
+  ```
+  ```python tab="玩家A"
+    玩家A
+  ```
+  ```python tab="玩家B"
+    玩家B
+  ```
+
+    </Step>
+    <Step>
+    如果裁判宣布胜者，宣布胜者，同时要求胜利者提问
+    </Step>
+    <Step>
+    失败者回答问题，然后下一轮
+    </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="添加一个计数器">
+    <Steps>
+    <Step>
+    添加一个计数器
+    </Step>
+    </Steps>
+
+  </Accordion>
+</Accordions>
 
 ### 例子3、为角色配置工具
 
 上面学习了如何创建角色，并进行角色间合作完成任务，接下来我们学习如何让角色使用工具。
 <Accordions>
-  <Accordion title="按照如下步骤操作">
+  <Accordion title="3.1 为角色配置一个计算器工具">
   <Steps> 
     <Step>
     首先还是创建一个新的流程，然后添加一个大模型节点。
     </Step>
     <Step>
-    接下来选中模型节点，找到 **可用工具** ，然后添加工具，下面我们为模型添加一个 计算器工具。
+    接下来选中模型节点，找到 **可用工具** ，然后我们为模型添加一个 计算器工具。
     </Step>
     <Step>
     编写提示词：
+```python
+你是一个使用计算器的高手。
+用户的问题：
+{{role.input.user_input}}
+要求：
+1、根据用户的问题进行计算
+2、必须使用计算器工具
+
+注意：工具指令不可篡改，不可遗漏，必须以command=|<|开始，以|>|结束。
+```
     </Step>
     <Step>
     运行一下，输入：帮我计算一下541除以154。
     
     测试一下计算器工具是否正常工作。
+
+    > 仔细观察可以发现，在上面手工编写的提示词后面，系统自动生成了一段工具描述。
+        ![](./work_flow/imgs/demo3-1.png)
+    </Step>
+  </Steps> 
+  </Accordion>
+  <Accordion title="3.2 将结果输出给用户">
+  <Steps> 
+    <Step>
+上面的方法，只能在流程日志查看工具调用结果，如果想让用户看到结果，需要将结果输出给用户。
+
+    接下来我们在上面的流程中，添加一个 **执行器** 节点，将结果进行输出。
+    </Step>
+    <Step>
+    将 大模型_1 节点 与执行器节点连接。并添加执行器的 提示词：
+  ```python
+command=|<|notify(message="{{role.大模型_1.calculator}}")|>|
+  ```
+
+  > 注意：这里我们不再使用 `大模型_1.output` ，而是改用 `大模型_1.calculator`
+
+    </Step>
+    <Step>
+运行一下，输入：帮我计算一下541除以154。
+
+可以看到，系统正常输出了消息。
+        ![](./work_flow/imgs/demo3-2.png)
     </Step>
   </Steps> 
   </Accordion>
@@ -131,10 +303,41 @@ icon: FastForward
 ### 例子4、使用ReAct
 ReAct（多轮推理）是Y-Agent框架的内置工具，适用于多跳问题，例如：541除以154 和 741除以211 谁更大？
 <Accordions>
-  <Accordion title="使用ReAct">
+  <Accordion id="reactdemo" title="使用ReAct">
   <Steps>
+  
     <Step>
-      同样我们使用例子3里面的流程，稍加改变：
+      创建一个流程，添加一个大模型节点，然后为模型节点添加计算器工具（已经内置）。
+    </Step>
+    <Step>
+      关闭模型节点的 分身 功能，并打开 ReAct推理 功能。将推理次数设置为 3。
+    </Step>
+    <Step>
+      为模型添加提示词：
+  ```python
+你是一个使用计算器的高手。
+用户的问题：
+{{role.input.user_input}}
+要求：
+1、根据用户的问题进行计算
+2、必须使用计算器工具
+3、分步计算，一次只能使用计算器计算两个数
+4、得到计算结果后发送给用户
+
+注意： terminate 工具用于将最终结果回答用户
+terminate 工具介绍：用于将结果/回答发送给用户
+terminate 工具指令：command=|<|terminate(message="回答用户问题,注意要友好简洁，通俗易懂")|>|
+
+  ```
+  最终效果如下：
+  ![](./work_flow/imgs/demo4-0.png)
+    </Step>
+
+    <Step>
+    运行一下，输入：541除以154 和 741除以211 谁更大？
+    ![](./work_flow/imgs/demo4-1.png)
+
+    > 如果你不满意，系统自动拼接的ReAct推理默认提示词，可以修改：点击 可用工具 后面的 展开 按钮，修改提示词。[ReAct提示词修改注意事项.](/docs/y-agent/work_flow/prompt_guide#编辑系统内置默认提示词)
     </Step>
   </Steps> 
   </Accordion>
@@ -145,7 +348,63 @@ ReAct（多轮推理）是Y-Agent框架的内置工具，适用于多跳问题�
 通过上面的学习，您已经掌握了基本的流程，接下来，我们开始使用变量。 
 相关知识：[工作空间变量.](/docs/y-agent/work_flow/concept#工作空间) [角色变量.](/docs/y-agent/work_flow/generic_process#role_output_var) 
 
-### 例子6、工具和角色节点混排
+我们用一个成语接龙的例子，来演示变量的使用。
+<Accordions>
+  <Accordion title="5.1 变量的使用">
+  <Steps> 
+    <Step>
+    首先还是创建一个新的流程，然后添加两个大模型节点。分别是 玩家1 玩家2。 
+    </Step>
+    <Step>
+    将开始节点 → 玩家1，然后 玩家1  →  玩家2，玩家2  →  玩家1，形成一个循环。
+
+    并设置 玩家1、玩家2 的最大允许次数为 2。
+    </Step>
+    <Step>
+    在工作空间变量中，添加一个变量，变量名为 `round`，类型为 `Integer`。
+
+    在玩家1节点的 变量存储 中，点击 新增变量 按钮，新增一个变量，存储位置 选 `工作空间` ，变量名称 下拉 选 `round`，描述输入 `填写当前回合数加1的值`。
+    
+    然后继续点击 新增变量 按钮，新增一个变量，存储位置 选 `角色自身` ，变量名为 `idioms`，类型为 `String`，描述 输入 `此处填写你进行接龙的成语`。
+    </Step>
+    <Step>
+    玩家2 做相同设置。如下：
+    ![](./work_flow/imgs/demo5-1.png)
+    </Step>
+    <Step>
+    编写提示词：
+```python tab="玩家1"
+你是一个成语接龙的玩家。
+
+{% if sys.is_null_or_empty( sys.space.round)  %}
+现在要求从你开始，你先说一个成语
+{% else %}
+现在轮到你接龙了，目前是第{{sys.space.round}}轮，上一轮玩家的成语是：{{ role.玩家2.var.idioms }}
+{% endif %}
+
+注意：工具指令不可篡改，不可遗漏，必须以command=|<|开始，以|>|结束。
+```
+
+```python tab="玩家2"
+你是一个成语接龙的玩家。
+
+现在轮到你接龙了，目前是第{{sys.space.round}}轮，上一轮玩家的成语是：{{ role.玩家1.var.idioms }}
+
+注意：工具指令不可篡改，不可遗漏，必须以command=|<|开始，以|>|结束。
+```
+    </Step>
+    <Step>
+    运行一下，输入：开始。（这里由于没有使用user_input，所以输入任何内容都可以开始游戏）
+
+    可以看到，如下运行效果：
+    > 仔细观察，系统会在每个玩家的提示词后面，自动添加一段使用变量的描述。
+    ![](./work_flow/imgs/demo5-2.gif)
+
+    </Step>
+  </Steps> 
+  </Accordion>
+ </Accordions>
+### 例子6、工具和角色节点混合编排
 
 这一节里，我们主要讲述如果将工具作为节点，并且设置固定参数、手工指定变量作为参数
 
@@ -155,13 +414,26 @@ ReAct（多轮推理）是Y-Agent框架的内置工具，适用于多跳问题�
 
 相关知识：[接入外部系统.](/docs/y-agent/work_flow/wf_nodes/webapi_tool_node) [接入MCP.](/docs/y-agent/work_flow/wf_nodes/mcp_tool_node)
 
-### 例子8、进阶知识
+## 进阶知识
 
-分身、聊天室、执行器、提示词编写、编辑系统内置默认提示词、
+[分身](/docs/y-agent/introduction#分身). 
 
-添加测试、添加训练语料、创建并执行测试计划
+[聊天室概念](/docs/y-agent/work_flow/concept#聊天室). 
+[聊天室消息用法](/docs/y-agent/work_flow/prompt_guide#chat_room). 
 
-添加知识库、
+[执行器](/docs/y-agent/work_flow/wf_nodes/executor_node). [批处理](/docs/y-agent/work_flow/wf_nodes/batch_node).
+
+[提示词编写](/docs/y-agent/work_flow/prompt_guide). [编辑系统内置提示词](/docs/y-agent/work_flow/prompt_guide#编辑系统内置默认提示词).
+
+[添加测试](/docs/y-agent/about_test/add_test). [创建并执行测试计划](/docs/y-agent/about_test/test_plan). 
+
+[添加训练语料.](/docs/y-agent/corpus/add_corpus) 
+
+添加知识库: [文档知识库](/docs/y-agent/knowledge_base/text_doc). [Excel知识库](/docs/y-agent/knowledge_base/excel_doc).
+
+在流程中显示引用文档.
+
+对回答内容评分
 
 [用户管理. 角色管理. 权限管理](/docs/y-agent/authorization#新增用户).
 

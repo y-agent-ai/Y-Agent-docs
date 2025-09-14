@@ -43,10 +43,7 @@ description: 大模型节点的详细配置和说明
     | 参数描述     | 说明参数的含义、填写规则及注意事项，明确参数格式、取值范围，帮助模型正确生成或使用参数。         |
     | 参数         | 模型需填写的具体参数值。若留空，代表有模型填写；也可以手工直接填写值或使用 Jinja模板（如 \{\{user_input}}） |
 
-    配置好的工具，无需为模型编写提示词，系统会自动根据工具描述生成提示词。效果：
-    ```
-    TODO:
-    ```
+    配置好的工具，无需为模型编写提示词，系统会自动根据工具描述生成提示词。
 
   </Accordion>
   
@@ -129,12 +126,8 @@ description: 大模型节点的详细配置和说明
 配置好变量，无需为模型编写提示词，系统会自动根据变量和描述生成提示词。
 
 <Accordions>
-  <Accordion id="auto_gen_prompt" title="配置好变量，无需为模型编写提示词，系统会自动根据变量和描述生成提示词。">
-      
-  效果：
-  ```
-  TODO:
-  ```
+  <Accordion id="auto_gen_prompt" title="配置好变量，无需为模型编写提示词，系统会自动根据变量和描述生成提示词。">      
+
   <include>../public/role_output_var.mdx</include>
   <include>../public/space_var_type.mdx</include>
 
