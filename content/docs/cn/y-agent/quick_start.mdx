@@ -102,7 +102,7 @@ notify 工具指令：command=|<|notify(message="用“我是2号助理”作为
     </Steps>
   </Accordion>
 
-  <Accordion title="将 `notify` 工具换成 `terminate` 试试呢 ？">
+  <Accordion title="1.4 将 `notify` 工具换成 `terminate` 试试呢 ？">
 
     <Steps>
     <Step>
@@ -124,7 +124,7 @@ terminate 工具指令：command=|<|terminate(message="回答用户问题,注意
     </Step>
     </Steps>
   </Accordion>
-  <Accordion title="1.4 不想在提示词里使用 `notify` 或者 `terminate` ？">
+  <Accordion title="1.5 不想在提示词里使用 `notify` 或者 `terminate` ？">
   <Steps>
     <Step>
     如果你觉得这种向流程发送消息的方式不好理解，那么你可以在 添加一个 触发器节点：
@@ -147,7 +147,7 @@ terminate 工具指令：command=|<|terminate(message="回答用户问题,注意
   ```
   > 注意：这里的 `{{role.大模型_1.output}}` 使用了Jinja模板，可以将模型的输出作为参数传入到提示词中。[jinja官方文档](https://jinja.palletsprojects.com/en/stable/templates/).
     
-    ![](./work_flow/imgs/demo1.4.png)
+    ![](./work_flow/imgs/demo1.5.png)
 
     </Step>
     <Step>
@@ -204,7 +204,10 @@ terminate 工具指令：command=|<|terminate(message="回答用户问题,注意
     
     </Step>
     <Step>
-    由于出现了循环连接，为了防止死循环，需要设置运行次数限制：（仅需要裁判节点即可）
+    由于出现了循环连接，为了防止死循环，需要设置运行次数限制：
+    
+    > 注意：不仅裁判节点的运行次数设置为3，同时玩家A和玩家B的，也需要运行次数设置为3
+
     ![](./work_flow/imgs/demo2-2.png)
     </Step>
     <Step>
