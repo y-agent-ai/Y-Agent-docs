@@ -177,9 +177,13 @@ get_document()，根据文档多个id提取对应内容
 ```python
   {{sys.chat_room.get_talks("张三","").message}}
 ```
-提取接收者为张三的一条消息：
+提取接收者为张三的第一条消息：
 ```python
   {{sys.chat_room.get_talks("","张三").message.first[1]}}
+```
+提取接收者为张三的最后一条消息：
+```python
+  {{sys.chat_room.get_talks("","张三").message.last[1]}}
 ```
 
 
