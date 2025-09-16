@@ -36,6 +36,20 @@ EXCEL参数库召回文本数
 
 expression参数：计算表达式 格式"1+2"
 
+计算器工具，其实是对NumExpr的简单封装，具体功能参考NumExpr的文档。
+
+NumExpr 支持以下运算符和函数：
+
+逻辑运算符：&, |, ~
+
+比较运算符：`<`, `<=`, `==`, `!=`, `>=`, `>`
+
+一元算术运算符：`-`
+
+二进制算术运算符：`+`, `-`, `*`, `/`, `**`, `%`, `<<`, `>>`
+
+支持的函数：where, sin, cos, tan, arcsin, arccos, arctan, arctan2, sinh, cosh, tanh, arcsinh, arccosh, arctanh, log, log10, log1p, exp, expm1, sqrt, abs, conj, real, imag, complex, contains
+
 </Accordion>
 
 <Accordion title="流程日志">
@@ -43,7 +57,12 @@ flow_logs	流程日志	指定条件获取流程日志
 </Accordion>
 <Accordion title="添加单元测试">
 		
-add_case_unit	添加单元测试	用于添加单元测试用例
+add_case_unit	添加单元测试	用于把指定的流程运行日志添加到单元测试中。
+输入：
+unit_cate_id参数 单元测试的分类id
+node_log_id参数 填写要添加单元测试的节点日志id
+
+输出：？？？
 
 </Accordion>
 <Accordion title="添加训练语料">
@@ -56,10 +75,15 @@ add_train	添加训练语料	添加训练语料
 add_content	添加文档知识	向指定知识库动态添加文档知识
 
 </Accordion>
-<Accordion title="追加文档内容">
+<Accordion title="知识库内容追加">
 		
 append_content	追加文档内容	向指定文档中追加内容
+输入：
+doucument_id参数  填写文档的id
+content参数 填写要追加的内容
+test_note参数 填写测试备注
 
+输出：？？？
 
 </Accordion>
 <Accordion title="产品参数主题">
