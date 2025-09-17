@@ -52,17 +52,53 @@ NumExpr 支持以下运算符和函数：
 
 </Accordion>
 
-<Accordion title="流程日志">
-flow_logs	流程日志	指定条件获取流程日志
+<Accordion title="查询流程日志" id="query_flow_logs">
+工具名称：		
+flow_logs	查询流程日志
+
+功能描述：按照节点id获取流程日志
+
+使用方法：
+| 参数名 | 说明 |  参考值 |
+|--------|--------|------|
+| flow_id | 流程唯一标识 |  已记录的流程ID |
+| role_id | 角色/节点唯一标识 | 已记录的节点ID | 
+| start_time |  日志起始时间（引用开始节点输入） | `{{role.input.start_time}}` |
+| end_time | 日志结束时间（引用开始节点输入） | `{{role.input.end_time}}` | 
+| max_top_n | 最大返回日志数量，空值表示不限制 |   | 
+
+返回值为 JSON 数组，如下：
+```json
+[{"input":"节点的输入1", "log_id":1231, "node_log_id":22, "output":"节点的输出1", "role":"节点角色名称","role_id":"1744097553045"},
+{"input":"节点的输入2", "log_id":1231, "node_log_id":22, "output":"节点的输出2", "role":"节点角色名称","role_id":"1744097553045"}]
+```
+| 字段 | 描述 |
+| :--- | :--- |
+| `input` | 节点的输入 |
+| `log_id` | 日志的唯一标识 |
+| `node_log_id` | 节点日志的唯一标识 |
+| `output` | 节点的输出 |
+| `role` | 节点角色名称，节点顶部的角色名称 |
+| `role_id` | 节点的唯一标识，节点顶部的id |
+
+
 </Accordion>
 <Accordion title="添加单元测试">
-		
-add_case_unit	添加单元测试	用于把指定的流程运行日志添加到单元测试中。
-输入：
-unit_cate_id参数 单元测试的分类id
-node_log_id参数 填写要添加单元测试的节点日志id
+工具名称：		
+add_case_unit	添加单元测试	
 
-输出：？？？
+功能描述：用于把指定的流程运行日志添加到单元测试中。
+
+使用方法：
+| 参数名 | 说明 | 参考值 |
+|--------|--------|------|
+| unit_cate_id | 手工建立好的单元测试的分类id | - |
+| node_log_id | 要添加单元测试的节点日志id，从查询流程日志中可以获取到 | - |
+| test_note | 测试备注信息 | 注意以下两点：1、回答是否前后矛盾。2、是否存在歧义。 |
+
+添加成功后，工具会返回类似结果：
+用例id: 5465
+
 
 </Accordion>
 <Accordion title="添加训练语料">
