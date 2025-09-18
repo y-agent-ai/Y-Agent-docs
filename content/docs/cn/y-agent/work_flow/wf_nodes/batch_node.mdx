@@ -58,7 +58,9 @@ doc
 
 # 以下提示词代码用来取出每批里面的每个item的值
 {% for doc in batch.item %}
-"编号：":"{{doc.id}}","标题：":"{{doc.title}}","内容：":"{{doc.content}}"
+编号：{{doc.id}}
+标题：{{doc.title}}
+内容：{{doc.content}}
 {% endfor %}
 
 ```

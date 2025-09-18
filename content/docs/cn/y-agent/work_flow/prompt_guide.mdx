@@ -209,6 +209,16 @@ get_document()，根据文档多个id提取对应内容
   [{"id":"id","from_role":"发送者","to_role":"接收者","message":"消息内容","send_time"："时间"}]
 ```
 
+高级案例：
+```python  tab="获取聊天室所有消息"
+{{sys.chat_room.get_talks()}}
+```
+```python  tab="对消息格式化输出"
+{% for v in sys.chat_room.get_talks() %}
+ {{v.sender}} 对  {{v.receiver}} 说： {{v.message}} 
+
+{% endfor %}
+```
 
 
 
