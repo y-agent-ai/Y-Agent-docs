@@ -21,7 +21,7 @@ import NotebookImg from './notebook.png';
 import { cva } from 'class-variance-authority';
 
 export function CreateAppAnimation() {
-  const installCmd = 'npm create fumadocs-app';
+  const installCmd = 'gh repo clone y-agent-ai/Y-Agent';
   const tickTime = 100;
   const timeCommandEnter = installCmd.length;
   const timeCommandRun = timeCommandEnter + 3;
@@ -61,20 +61,20 @@ export function CreateAppAnimation() {
       <Fragment key="command_response">
         {tick > timeCommandRun + 1 && (
           <>
-            <span className="font-bold">◇ Project name</span>
-            <span>│ my-app</span>
+            <span className="font-bold">◇ 安装依赖 </span>
+            <span>│ pip install requirements.txt</span>
           </>
         )}
         {tick > timeCommandRun + 2 && (
           <>
             <span>│</span>
-            <span className="font-bold">◆ Choose a content source</span>
+            <span className="font-bold">◆ 启动</span>
           </>
         )}
         {tick > timeCommandRun + 3 && (
           <>
-            <span>│ ● Fumadocs MDX</span>
-            <span>│ ○ Content Collections</span>
+            <span>│ python main.py</span>
+            <span>│ 启动成功</span>
           </>
         )}
       </Fragment>,
@@ -119,9 +119,9 @@ function LaunchAppWindow(
       )}
     >
       <div className="relative flex h-6 flex-row items-center border-b bg-fd-muted px-4 text-xs text-fd-muted-foreground">
-        <p className="absolute inset-x-0 text-center">localhost:3000</p>
+        <p className="absolute inset-x-0 text-center">localhost:8010</p>
       </div>
-      <div className="p-4 text-sm">New App launched!</div>
+      <div className="p-4 text-sm">Application started successfully.</div>
     </div>
   );
 }
@@ -310,19 +310,19 @@ export function PreviewImages() {
   const previews = [
     {
       image: MainImg,
-      name: 'Studio',
+      name: '套件',
     },
     {
       image: NotebookImg,
-      name: 'Y-Agent',
+      name: '智能体',
     },
     {
       image: OpenAPIImg,
-      name: 'Y-Trainer',
+      name: '语料',
     },
     {
       image: OpenAPIImg,
-      name: '首页banner',
+      name: '训练',
     },
   ];
 

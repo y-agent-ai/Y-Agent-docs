@@ -213,29 +213,97 @@ terminate 工具指令：command=|<|terminate(message="回答用户问题,注意
     <Step>
     编写提示词：
   ```python tab="裁判"
-    裁判
+    你是真心话游戏的裁判。
+
+
+## 现在有两个玩家：玩家A和玩家B
+
+{% if sys.is_null_or_empty(role.玩家A) %}
+这是第一轮，请宣布比赛开始，要求玩家A和玩家B同时出拳。
+{% else %}
+
+# 裁判的职责：
+判断以下情况做出不同处理：
+1、如果玩家A和玩家B出了相同的拳，则裁判宣布平局，这时候裁判要求玩家A和玩家B重新出拳。
+
+2、如果玩家A和玩家B出不同的拳，next_roles只选择一个角色，胜利者，发送任务，告知胜利者并提问。
+
+3、如果胜利者提问完毕，next_roles只选择一个角色，将问题告知失败者，要求失败者回答问题。
+
+4、如果失败者回答完毕，要求双方进行下一轮
+
+以下是历史记录：
+{% for v in sys.chat_room.get_talks() %}
+ {{v.sender}} 对  {{v.receiver}} 说： {{v.message}} 
+{% endfor %}
+
+下面你分配接下来的任务：
+{% endif %}
+
+注意：工具指令不可篡改，不可遗漏，必须以command=|<|开始，以|>|结束。
   ```
   ```python tab="玩家A"
-    玩家A
+你在玩一个真心话游戏
+现在你扮演的是：玩家A，和你一起玩游戏的还有玩家B，现在要求你按照裁判的指挥玩游戏。
+# 现在裁判的要求如下：
+{% if  sys.is_null_or_empty(sys.chat_room.get_talks("裁判","玩家A").last(1))  %}
+请出拳
+{% else %}
+{{ sys.chat_room.get_talks("裁判","玩家A").last(1).message}}
+{% endif %}
+出拳的时候需要私聊裁判，你的出什么
+注意:工具指令不可篡改,不可遗漏,必须以command=|<|开始，以|>|结束。
+command=|<|send_message(receiver="裁判",message="填写消息的内容") |>|
   ```
   ```python tab="玩家B"
-    玩家B
+你在玩一个真心话游戏
+现在你扮演的是：玩家B，和你一起玩游戏的还有玩家A，现在要求你按照裁判的指挥玩游戏。
+# 现在裁判的要求如下：
+
+{% if  sys.is_null_or_empty(sys.chat_room.get_talks("裁判","玩家B").message.last(1))  %}
+请出拳
+{% else %}
+{{ sys.chat_room.get_talks("裁判","玩家B").message.last(1)}}
+{% endif %}
+
+出拳的时候需要私聊裁判，你的出什么
+注意:工具指令不可篡改,不可遗漏,必须以command=|<|开始，以|>|结束。
+command=|<|send_message(receiver="裁判",message="填写消息的内容") |>|
   ```
 
     </Step>
     <Step>
-    如果裁判宣布胜者，宣布胜者，同时要求胜利者提问
+    为角色设置一个能力强一些的模型，比如deepseek R1 模型。
+    > 小模型的能力有限，可能无法理解游戏的具体进程，无法准确执行指令。
     </Step>
     <Step>
-    失败者回答问题，然后下一轮
+    运行一下看看效果：
+    <Tabs items={['Round-1 裁判', '1.A', '1.B','Round-2 裁判', '2.B','Round-3 裁判', '3.A', 'Round-4裁判', '4.A', '4.B', 'Round-5裁判']}>
+  <Tab value="Round-1 裁判">![](./work_flow/imgs/demo2-3-1j.png)</Tab>
+  <Tab value="1.A">![](./work_flow/imgs/demo2-3-1a.png)</Tab>
+  <Tab value="1.B">![](./work_flow/imgs/demo2-3-1b.png)</Tab>
+
+  <Tab value="Round-2 裁判">![](./work_flow/imgs/demo2-3-2j.png)</Tab>
+  <Tab value="2.B">![](./work_flow/imgs/demo2-3-2b.png)</Tab>
+
+  <Tab value="Round-3 裁判">![](./work_flow/imgs/demo2-3-3j.png)</Tab>
+  <Tab value="3.A">![](./work_flow/imgs/demo2-3-3a.png)</Tab>
+
+  <Tab value="Round-4 裁判">![](./work_flow/imgs/demo2-3-4j.png)</Tab>
+  <Tab value="4.A">![](./work_flow/imgs/demo2-3-4a.png)</Tab>
+  <Tab value="4.B">![](./work_flow/imgs/demo2-3-4b.png)</Tab>
+
+  <Tab value="Round-4 裁判">![](./work_flow/imgs/demo2-3-5j.png)</Tab>
+</Tabs>
     </Step>
     </Steps>
   </Accordion>
 
-  <Accordion title="添加一个计数器">
+  <Accordion title="课外作业">
     <Steps>
     <Step>
-    添加一个计数器
+    1、不使用聊天室消息的话，是否可以通过工作空间变量，完成这个游戏？
+    2、去掉裁判节点，让玩家自己进行游戏，如何实现？
     </Step>
     </Steps>
 
@@ -411,12 +479,18 @@ terminate 工具指令：command=|<|terminate(message="回答用户问题,注意
 
 这一节里，我们主要讲述如果将工具作为节点，并且设置固定参数、手工指定变量作为参数
 
-### 例子7、接入外部 WebApi 和 MCP
+
+### 例子7、使用视觉模型
+
+使用视觉模型
+
+### 例子8、接入外部 WebApi 和 MCP
 
 本框架可以方便的与您原有的系统集成，只需要将您的接口作为WebApi，并返回json数据即可。
 
 相关知识：[接入外部系统.](/docs/y-agent/work_flow/wf_nodes/webapi_tool_node) [接入MCP.](/docs/y-agent/work_flow/wf_nodes/mcp_tool_node)
 
+> 以上例子均包含在，系统预设的演示案例中，您可以直接查看。
 ## 进阶知识
 
 [分身](/docs/y-agent/introduction#分身). 
