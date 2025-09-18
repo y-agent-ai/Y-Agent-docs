@@ -16,7 +16,10 @@ import {
   SearchIcon,
   ServerIcon,
   Terminal,
+  Check,
+  BookOpen,
   TimerIcon,
+  StarHalf,
 } from "lucide-react";
 import { File, Files, Folder } from "fumadocs-ui/components/files";
 import Link from "next/link";
@@ -29,9 +32,10 @@ import {
   PreviewImages,
   WhyInteractive,
 } from "./page.client";
-import { NetlifyLogo, VercelLogo } from "./icons";
+import { GiteeLogo, GithubLogo,NetlifyLogo, VercelLogo } from "./icons";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import ArchImg from "./arch.png";
+import LayerImg from "./layer.png";
 
 const badgeVariants = cva(
   "inline-flex size-7 items-center justify-center rounded-full bg-fd-primary font-medium text-fd-primary-foreground"
@@ -101,8 +105,8 @@ function Architecture() {
         </p>
       </div>
       <Image
-        src={ArchImg}
-        alt="Architecture"
+        src={LayerImg}
+        alt="SysLayer"
         className="mx-auto -my-16 w-full max-w-[400px] invert dark:invert-0 lg:mx-0"
       />
     </div>
@@ -233,7 +237,7 @@ function End() {
         </li>
         <li className="flex flex-row flex-wrap gap-2 mt-auto">
           <a
-            href="https://stackblitz.com/~/github.com/fuma-nama/fumadocs-ui-template"
+            href="/docs/y-agent/quick_start"
             rel="noreferrer noopener"
           >
             Open Demo
@@ -254,18 +258,19 @@ function Search(): React.ReactElement {
       <div className="flex select-none flex-col rounded-[inherit] bg-gradient-to-b from-fd-popover">
         <div className="inline-flex items-center gap-2 px-4 py-2 text-sm text-fd-muted-foreground">
           <SearchIcon className="size-4" />
-          Search...
+          Agent Trainer...
         </div>
-        <div className="border-t p-2">
+        <div className="border-t p-2 text-fd-muted-foreground text-sm mb-4 ">
           {[
-            "Getting Started",
-            "Components",
-            "MDX Content",
-            "User Guide",
-            "Javascript SDK",
+            " 自动日志分析",
+            " 流程测试",
+            " 单元测试",
+            " 语料标注",
+            " 快速生产私有领域语料",
+            " 集成训练框架",
           ].map((v, i) => (
             <div key={v}>
-              <FileTextIcon className="size-4 text-fd-muted-foreground" />
+              <Check  className="size-4 text-fd-muted-foreground" />
               {v}
             </div>
           ))}
@@ -285,7 +290,8 @@ function Highlights() {
         <MousePointer className="-ml-1 mt-8" />
       </div>
       <Highlight icon={TimerIcon} heading="灵活 & 快速.">
-        高度开放的 UI 工作流组件，支持 单智能体 多智能体 混排，同时开放了底层提示词修改功能。
+        高度开放的 UI 工作流组件。
+        支持 单智能体 多智能体 混排，同时开放了底层提示词修改功能。
       </Highlight>
       <Highlight icon={RocketIcon} heading="高效集成.">
         可以将原有的 IT 系统，快速接入到智能场景中，实现自动化、智能化。
@@ -297,8 +303,7 @@ function Highlights() {
         友好直观的日志查看界面，可以快速分析问题，同时支持自定义的 自动化日志 分析。
       </Highlight>
       <Highlight icon={KeyboardIcon} heading="RAG.">
-        Syntax highlighting on Shiki, Typescript Twoslash, OpenAPI docs
-        generation, and more.
+        支持 文本文档、Excel文档，可与其他 RAG系统集成。
       </Highlight>
       <Highlight icon={PersonStandingIcon} heading="领域数据生产.">
         可以识别基础模型不懂的领域知识，并自动化进行数据采集、数据清洗、数据增强。
@@ -350,7 +355,7 @@ function Hero() {
       />
       <h1 className="mb-8 text-4xl font-medium md:hidden">开始 创建 您的</h1>
       <h1 className="mb-8 max-w-[600px] text-4xl font-medium max-md:hidden">
-        一个企业级 Agent 开发平台套件
+        企业级 Agent 开发平台套件
         <br />
         
       </h1>
@@ -431,19 +436,20 @@ function Introduction(): React.ReactElement {
             wrapper={{
               className: "absolute inset-x-2 top-0 shadow-lg",
             }}
-            code={`---
-title: My Documentation
----
+            code={`
+下载启动器
 
-## Introduction
+## 仅支持Windows系统
 
-Hello World
+运行：
+Y-Agent-Studio-Lancher.exe
+          />
 `}
           />
           <Files className="z-2 mt-40 shadow-xl">
-            <Folder name="content" defaultOpen>
-              <File name="index.mdx" />
-              <File name="components.mdx" />
+            <Folder name="启动器包含的项目" defaultOpen>
+              <File name="Y-Agent" />
+              <File name="Y-Squeeze" />
             </Folder>
           </Files>
         </div>
@@ -455,11 +461,11 @@ Hello World
         </p>
 
         <div className="mt-4 flex flex-row flex-wrap items-center gap-8">
-          <a href="https://vercel.com" rel="noreferrer noopener">
-            <VercelLogo className="h-auto w-32" />
+          <a href="https://github.com/y-agent-ai" rel="noreferrer noopener">
+            <GithubLogo className="h-auto w-32" />
           </a>
-          <a href="https://netlify.com" rel="noreferrer noopener">
-            <NetlifyLogo className="h-auto w-32" />
+          <a href="https://gitee.com/y-agent-ai" rel="noreferrer noopener">
+            <GiteeLogo className="h-auto w-32" />
           </a>
         </div>
       </div>
@@ -470,7 +476,7 @@ Hello World
 function Contributing() {
   return (
     <div className="flex flex-col items-center border-x border-t px-4 py-16 text-center">
-      <Heart fill="currentColor" className="text-pink-500 mb-4" />
+      <Heart fill="currentColor" className="text-orange-500 mb-4" />
       <h2 className="mb-4 text-xl font-semibold sm:text-2xl">
         敏捷 安全 稳定.
       </h2>
@@ -486,7 +492,7 @@ function Features() {
   return (
     <div className="grid grid-cols-1 border-r md:grid-cols-2">
       <Feature
-        icon={SearchIcon}
+        icon={BookOpen}
         subheading="完整开源"
         heading="Your source. Your choice"
         description={
@@ -532,16 +538,16 @@ function Features() {
       <Feature
         icon={CpuIcon}
         subheading="支持 预训练 SPF 强化学习"
-        heading="Enhance your search experience."
-        description="Integrate with Orama Search and Algolia Search in your docs easily."
+        heading="解决语料生产难题，快速实现业务需求."
+        description="可以通过流程日志生产语料，自动识别问题语料，自动识别模型不懂的知识。"
       >
         <Search />
       </Feature>
       <Feature
         icon={Terminal}
         subheading="可以快速与代码集成"
-        heading="The Shadcn UI for docs"
-        description="Fumadocs CLI creates interactive components for your docs, offering a rich experience to your users."
+        heading="通过Web API 和 MCP 进行快速集成"
+        description="将外部系统的API添加为插件工具。Agent 快速发布为Web API。"
       >
         <div className="relative">
           <div className="grid grid-cols-[1fr_2fr_1fr] h-[220px] *:border-fd-foreground/50 *:border-dashed mask-radial-circle mask-radial-from-white">
@@ -559,16 +565,16 @@ function Features() {
           </div>
           <code className="absolute inset-0 flex items-center justify-center">
             <code className="text-sm text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-fd-foreground font-medium">
-              npx @fumadocs/cli add
+              Web API Plugin and MCP Integration
             </code>
           </code>
         </div>
       </Feature>
       <Feature
         icon={PaperclipIcon}
-        subheading="文档支持"
-        heading="Flexibility that cover your needs."
-        description="Well documented, separated in packages."
+        subheading="完善的文档支持，持续升级更新"
+        heading="本项目已商业化使用，持续更新维护."
+        description="无需担心后续的升级维护问题."
       >
         <div className="mt-8 flex flex-col gap-4">
           <Link
