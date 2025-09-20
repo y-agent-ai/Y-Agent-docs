@@ -14,7 +14,9 @@ icon: FastForward
 
 <Banner changeLayout={false}>入门例子，帮助您快速上手</Banner>
 ## 案例教程
-接下来我们将从简单的例子开始，一些复杂的流程也仅仅是这些简单例子的组合
+> 以下例子均包含在，系统预设的演示案例中，您可以直接查看。
+
+接下来我们将从简单的例子开始，一些复杂的流程也仅仅是这些简单例子的组合。
 ### 例子1、接受和发送消息
 作为第一课，我们先构建一个非常简单的流程，接受用户输入，然后发送消息给用户。
 
@@ -481,8 +483,20 @@ terminate 工具指令：command=|<|terminate(message="回答用户问题,注意
 
 
 ### 例子7、使用视觉模型
-
-使用视觉模型
+使用视觉模型非常简单：
+  <Steps> 
+    <Step>
+    在模型管理菜单，添加一个支持视觉的大模型，例如智谱4V。
+    </Step>
+    <Step>
+    添加一个大模型节点，选择视觉模型，并设置参数即可，如下图。
+    </Step>
+  </Steps> 
+<Accordions>
+  <Accordion title="使用视觉模型示意图">
+![](./work_flow/imgs/demo7.png)
+  </Accordion>
+ </Accordions>
 
 ### 例子8、接入外部 WebApi 和 MCP
 
@@ -490,7 +504,6 @@ terminate 工具指令：command=|<|terminate(message="回答用户问题,注意
 
 相关知识：[接入外部系统.](/docs/y-agent/work_flow/wf_nodes/webapi_tool_node) [接入MCP.](/docs/y-agent/work_flow/wf_nodes/mcp_tool_node)
 
-> 以上例子均包含在，系统预设的演示案例中，您可以直接查看。
 ## 进阶知识
 
 [分身](/docs/y-agent/introduction#分身). 
@@ -516,7 +529,15 @@ terminate 工具指令：command=|<|terminate(message="回答用户问题,注意
 
 [系统设置](/docs/y-agent/sys_setting).
 
-高级知识：创建自动化流程分析工具、自动添加测试和训练语料、自动添加文档知识库 TODO：
+## 高阶知识
+
+[创建自动化流程分析工具](/docs/y-agent/demo/auto_analyze_logs). 
+
+[自动添加测试](/docs/y-agent/demo/auto_add_test). 
+
+[自动添加训练语料](/docs/y-agent/demo/auto_add_training_data). 
+
+[自动添加文档知识库](TODO).
 
 
 

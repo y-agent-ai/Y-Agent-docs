@@ -6,7 +6,7 @@ description: 按照一下的步骤，可以对如何创建流程，以及如何�
 ## 第一步：创建流程
 
 点击菜单 **流程图** -- **新建**，进入创建流程环节，如图：
-![alt](../../imgs/create_flow_dialog.png)
+![alt](./imgs/create_flow_dialog.png)
 
 - #### 流程图名称
 
@@ -18,6 +18,10 @@ description: 按照一下的步骤，可以对如何创建流程，以及如何�
 
 - #### 是否允许分享
 创建好的流程，可以通过网页分享给别人调用，也可以通过API调用。[如何分享流程](/docs/y-agent/work_flow/share_flow).
+
+分享设置-名称：不能为空，自定义一个名称，用作识别使用者的来源。
+
+api_key：无论是网页端使用还是WebAPI调用，都需要API_KEY作为密钥。
 
 - #### 是否启用日志
 
@@ -104,9 +108,10 @@ ReAct推理效果：
   <Accordion title="如何开启自动选择下游角色？">
 
  
-自动选择下游角色的效果：TODO：效果图
+自动选择下游角色的效果：
+![](./imgs/demo2-2.png)
 
-自动选择下游角色的详细介绍](TODO：URL).
+自动选择下游角色的详细介绍](/docs/y-agent/work_flow/wf_nodes/model_node#下游角色).
 
   </Accordion>
   

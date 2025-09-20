@@ -18,6 +18,8 @@ import Image from 'next/image';
 import MainImg from './main.png';
 import OpenAPIImg from './openapi.png';
 import NotebookImg from './notebook.png';
+import MainImg3 from './main3.png';
+import MainImg4 from './main4.png';
 import { cva } from 'class-variance-authority';
 
 export function CreateAppAnimation() {
@@ -317,11 +319,11 @@ export function PreviewImages() {
       name: '智能体',
     },
     {
-      image: OpenAPIImg,
+      image: MainImg3,
       name: '语料',
     },
     {
-      image: OpenAPIImg,
+      image: MainImg4,
       name: '训练',
     },
   ];
