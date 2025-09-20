@@ -260,7 +260,7 @@ function Search(): React.ReactElement {
           <SearchIcon className="size-4" />
           Agent Trainer...
         </div>
-        <div className="border-t p-2 text-fd-muted-foreground text-sm mb-4 ">
+        <div className="border-t p-4 text-fd-muted-foreground text-sm mb-6 ">
           {[
             " 自动日志分析",
             " 流程测试",
@@ -323,11 +323,11 @@ function Highlight({
 }): React.ReactElement {
   return (
     <div className="border-l border-t px-6 py-12">
-      <div className="mb-4 flex flex-row items-center gap-2 text-fd-muted-foreground">
-        <Icon className="size-4" />
-        <h2 className="text-sm font-medium">{heading}</h2>
+      <div className="mb-4 flex flex-row items-center gap-2">
+        <Icon className="size-5" />
+        <h2 className="text-l font-medium">{heading}</h2>
       </div>
-      <span className="font-medium">{children}</span>
+      <span className="text-sm font-medium text-fd-muted-foreground">{children}</span>
     </div>
   );
 }
@@ -359,7 +359,7 @@ function Hero() {
         <br />
         
       </h1>
-      <p className="mb-8 text-fd-muted-foreground md:max-w-[80%] md:text-xl">
+      <p className="mb-8 text-fd-muted-foreground md:max-w-[80%] md:text-l">
         Y-Agent Studio 是一个面向开发人员的框架，简单、灵活、高效；支持测试、模型微调。<br />
 
         可以快速集成到，现有的企业 IT 环境中。

@@ -56,7 +56,7 @@ export default async function Layout({
                 <Link href="/docs">文档</Link>
               </NavbarMenuTrigger>
               <NavbarMenuContent className="text-[15px]">
-                <NavbarMenuLink href="/docs/ui" className="md:row-span-2">
+                <NavbarMenuLink href="/docs" className="md:row-span-2">
                   <div className="-mx-3 -mt-3">
                     <Image
                       src={Preview}
@@ -75,24 +75,24 @@ export default async function Layout({
                 </NavbarMenuLink>
 
                 <NavbarMenuLink
-                  href="/docs"
+                  href="/docs/no_time_read_this"
                   className="lg:col-start-2"
                 >
                   <ComponentIcon className="bg-fd-primary text-fd-primary-foreground p-1 mb-2 rounded-md" />
-                  <p className="font-medium">流程</p>
+                  <p className="font-medium">概要</p>
                   <p className="text-fd-muted-foreground text-sm">
-                    开始使用流程
+                    快速预览
                   </p>
                 </NavbarMenuLink>
 
                 <NavbarMenuLink
-                  href="/docs"
+                  href="/docs/y-agent/work_flow/wf_nodes/webapi_tool_node"
                   className="lg:col-start-2"
                 >
                   <Server className="bg-fd-primary text-fd-primary-foreground p-1 mb-2 rounded-md" />
-                  <p className="font-medium">OpenAPI</p>
+                  <p className="font-medium">WebAPI</p>
                   <p className="text-fd-muted-foreground text-sm">
-                    查看API
+                    接入IT系统
                   </p>
                 </NavbarMenuLink>
 
@@ -101,20 +101,20 @@ export default async function Layout({
                   className="lg:col-start-3 lg:row-start-1"
                 >
                   <Pencil className="bg-fd-primary text-fd-primary-foreground p-1 mb-2 rounded-md" />
-                  <p className="font-medium">Markdown</p>
+                  <p className="font-medium">套件介绍</p>
                   <p className="text-fd-muted-foreground text-sm">
-                    学习如何使用 Markdown 编写文档。
+                    Y-Agent Studio 全套软件介绍
                   </p>
                 </NavbarMenuLink>
 
                 <NavbarMenuLink
-                  href="/docs/ui/manual-installation"
+                  href="/docs/y-agent/quick_start"
                   className="lg:col-start-3 lg:row-start-2"
                 >
                   <PlusIcon className="bg-fd-primary text-fd-primary-foreground p-1 mb-2 rounded-md" />
-                  <p className="font-medium">安装和使用</p>
+                  <p className="font-medium">快速开始</p>
                   <p className="text-fd-muted-foreground text-sm">
-                    学习如何使用
+                    学习如何安装和使用
                   </p>
                 </NavbarMenuLink>
               </NavbarMenuContent>

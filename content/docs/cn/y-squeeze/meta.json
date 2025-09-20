@@ -4,6 +4,13 @@
     "icon": "ArrowBigDown",
     "pages": [
         "introduction",
-        "advanced"
+        "attention",
+        "token_loss",
+        "token_entropy",
+        "compression",
+        "generation",
+        "clustering",
+        "model_knowledge_probe",
+        "corpus_quality"
     ]
   }

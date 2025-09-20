@@ -16,6 +16,12 @@ export const linkItems: LinkItemType[] = [
     type:'icon',
   },
   {
+    text: '快速开始',
+    url: '/docs/y-agent/quick_start',
+    icon: <LayoutTemplate />,
+    active: 'url',
+  },
+  {
     text: '工作流',
     url: '/docs/y-agent/work_flow/concept',
     icon: <LayoutTemplate />,
