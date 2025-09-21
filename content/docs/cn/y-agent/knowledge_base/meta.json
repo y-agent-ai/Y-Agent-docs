@@ -4,6 +4,7 @@
     "defaultOpen": true,
     "pages": [
         "text_doc",
-        "excel_doc"
+        "excel_doc",
+        "auto_add_doc"
     ]
 }

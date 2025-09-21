@@ -16,6 +16,7 @@
         "merchandise",
         "sys_setting",
         "authorization",
+        "webapi",
         "demo",
         "faq",
         "about_error"
