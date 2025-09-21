@@ -5,6 +5,8 @@ curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash - && sudo yum inst
 sudo yum install -y unzip
 # 解压
 unzip Y-Agent-docs-main.zip
+# 或者从github克隆
+git clone https://github.com/y-agent-ai/Y-Agent-docs.git
 # 安装文档依赖
 npm install -g next
 cd Y-Agent-docs-main
