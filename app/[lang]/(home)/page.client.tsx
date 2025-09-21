@@ -16,14 +16,13 @@ import { cn } from '@/lib/cn';
 import { buttonVariants } from '@/components/ui/button';
 import Image from 'next/image';
 import MainImg from './main.png';
-import OpenAPIImg from './openapi.png';
 import NotebookImg from './notebook.png';
 import MainImg3 from './main3.png';
 import MainImg4 from './main4.png';
 import { cva } from 'class-variance-authority';
 
 export function CreateAppAnimation() {
-  const installCmd = 'gh repo clone y-agent-ai/Y-Agent';
+  const installCmd = 'git@github.com:y-agent-ai/Y-Agent-docs.git';
   const tickTime = 100;
   const timeCommandEnter = installCmd.length;
   const timeCommandRun = timeCommandEnter + 3;

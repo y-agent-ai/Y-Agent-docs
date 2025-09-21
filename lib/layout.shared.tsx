@@ -27,6 +27,12 @@ export const linkItems: LinkItemType[] = [
     icon: <LayoutTemplate />,
     active: 'url',
   },
+  {
+    text: 'DownLoad',
+    url: '/docs/y-agent/quick_start',
+    icon: <LayoutTemplate />,
+    active: 'url',
+  },
  
   
 ];

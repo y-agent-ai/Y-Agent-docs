@@ -1,0 +1,13 @@
+
+# 安装 nodejs
+curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash - && sudo yum install -y nodejs
+#  安装 unzip
+sudo yum install -y unzip
+# 解压
+unzip Y-Agent-docs-main.zip
+# 安装文档依赖
+npm install -g next
+cd Y-Agent-docs-main
+npm install 
+# 启动
+npm run dev
