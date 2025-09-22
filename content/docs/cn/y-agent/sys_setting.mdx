@@ -23,11 +23,8 @@ description: 中文描述
 
 ### 知识库配置
 首先，系统会先按照一级标题和二级标题进行切分。[请参考切分规则](/docs/y-agent/knowledge_base/text_doc#2-手工录入)
-
 切块大小：当单个文档过大的时候，系统会进行切分，按照字符个数，切分成此大小的块。
-
 重叠大小：当前文档被切分后，两个相邻文档的重叠区域。
-
 所有的大小都是指字符长度。
 
 ### 向量数据库配置
@@ -45,19 +42,56 @@ Faiss
 
 参考案例：
 <Cards>
+
 <Card title="设置vllm向量">
 模型接口格式：vllm
+
 模型名称：bge-m3
+
 API接口地址：http://192.168.50.225:8001/v1/embeddings
+
 APIKEY：留空
+
 </Card>
+
+
+<Card title="设置智谱向量">
+模型接口格式：vllm
+
+模型名称：embedding-3
+
+API接口地址：https://open.bigmodel.cn/api/paas/v4/embeddings
+
+APIKEY：开放平台申请apikey
+
+</Card>
+
+
+<Card title="设置火山向量">
+模型接口格式：vllm
+
+模型名称：doubao-embedding-text-240715
+
+API接口地址：https://ark.cn-beijing.volces.com/api/v3/embeddings
+
+APIKEY：开放平台申请apikey
+
+</Card>
+
+<Card title="设置openai向量">
+
+模型接口格式：vllm
+
+模型名称：text-embedding-ada-002
+
+API接口地址： https://api.openai.com/v1/embeddings
+
+APIKEY：开放平台申请apikey
+
+</Card>
+
 </Cards>
 
-xinference
-
-智谱
-
-OpenAI
 ...
 
 ### 安全配置

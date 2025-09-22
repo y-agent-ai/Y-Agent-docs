@@ -494,14 +494,14 @@ function Features() {
       <Feature
         icon={BookOpen}
         subheading="完整开源"
-        heading="Your source. Your choice"
+        heading="企业部署. 最优选择."
         description={
           <>
             <span className="font-medium text-fd-foreground">
-              Designed to integrate with any content source:{" "}
+              设计用于与内部系统快速集成:{" "}
             </span>
             <span>
-              Fumadocs works on MDX, Content Collections, and even your own CMS.
+              可以快速开发测试Agent流程，在您的内部服务器运行，和内部 IT 系统集成。
             </span>
           </>
         }
@@ -522,12 +522,12 @@ function Features() {
           <div className="z-2 mt-[-170px] w-[300px] overflow-hidden rounded-lg border border-fd-foreground/10 shadow-xl backdrop-blur-lg">
             <div className="flex flex-row items-center gap-2 bg-fd-muted/50 px-4 py-2 text-xs font-medium text-fd-muted-foreground">
               <FileEditIcon className="size-4" />
-              MDX Editor
+              WebAPI  MCP
             </div>
             <pre className="p-4 text-[13px]">
               <code className="grid">
-                <span className="font-medium"># Hello World!</span>
-                <span>This is my first document.</span>
+                <span className="font-medium"># 启动!</span>
+                <span>创建流程 → 集成API → 发布API</span>
                 <span>{` `}</span>
                 <span className="font-medium">{`<ServerComponent />`}</span>
               </code>

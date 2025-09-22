@@ -54,9 +54,9 @@ NumExpr 支持以下运算符和函数：
 
 </Accordion>
 
-<Accordion title="流程日志查询" id="query_flow_logs">
+<Accordion title="流程日志查询" id="flow_node_logs">
 工具名称：		
-flow_logs	流程日志查询
+flow_node_logs 流程日志查询
 
 <include>../public/query_flow_logs.mdx</include>
 
@@ -64,7 +64,7 @@ flow_logs	流程日志查询
 </Accordion>
 <Accordion title="添加单元测试">
 工具名称：		
-add_case_unit	添加单元测试	
+unit_test_add	添加单元测试	
 
 功能描述：用于把指定的流程运行日志添加到单元测试中。
 
@@ -76,13 +76,13 @@ add_case_unit	添加单元测试
 | test_note | 测试备注信息 | 注意以下两点：1、回答是否前后矛盾。2、是否存在歧义。 |
 
 添加成功后，工具会返回类似结果：
-用例id: 5465
+`{"result":"success"} `
 
 
 </Accordion>
 <Accordion title="添加语料">
 工具名称：		
-add_train	添加训练语料
+train_case_add	添加训练语料
 
 
 使用方法：
@@ -91,15 +91,17 @@ add_train	添加训练语料
 | train_cate_id | 手工建立好的语料分类id | 在语料菜单，点击分类，页面左上角显示当前分类id。|
 | input_content | 输入文本 | 对应每条语料的输入 |
 | output_contet | 输出文本 | 对应每条语料的输出 |
+| feature| 输出文本 | 语料特征文本 |
+| node_log_id| 输出文本 | 训练的关联节点日志id，非必填 |
+| test_case_id| 输出文本 | 要添加训练的关联的单元测试的Id，非必填 |
 
-TODO：特征概要
+输出： `{"result":"success"} `
 
-
-输出：？？？
 </Accordion>
+
 <Accordion title="知识库文档添加">
 工具名称：		
-add_content	向指定知识库动态添加文档知识
+knowledge_add	向指定知识库动态添加文档知识
 
 
 使用方法：
@@ -111,22 +113,20 @@ add_content	向指定知识库动态添加文档知识
 | content | 文档的内容 | |
 
 
-输出：？？？
+输出： `{"result":"success"} `
 </Accordion>
 <Accordion title="知识库内容追加">
-		
-append_content	向指定文档中追加内容
-输入：
-doucument_id参数  填写文档的id
-content参数 填写要追加的内容
-test_note参数 填写测试备注
 
-输出：？？？
 
-</Accordion>
-<Accordion title="产品参数主题">
+knowledge_append	向指定文档中追加内容
 
-doc_param_topic	产品参数主题	用于通过产品ids列表获取对应的产品参数主题
+| 参数名 | 说明 | 参考值 |
+|--------|--------|------|
+| doucument_id | 文档id | 文档列表中的id 。|
+| content | 文档的内容 | |
+| test_note | 测试备注 | 可空|
+
+输出： `{"result":"success"} `
 
 </Accordion>
 
@@ -145,11 +145,19 @@ doc_param_topic	产品参数主题	用于通过产品ids列表获取对应的产
 
 1、知识库查询工具粗筛：这个节点负责使用工具查询出N个相关文章，可能包含很多无关文章。
 
-2、大模型精筛文档：这个节点负责，通过分分批处理问题与文章的相关性让大模型精确筛选是否相关，相关的会把文章id存储到一个工作空间变量中，比如a变量。
+2、大模型精筛文档：这个节点负责，通过分批处理问题与文章的相关性让大模型精确筛选是否相关，相关的会把文章id存储到一个工作空间变量中，比如a变量。
 
 3、大模型回答并添加系统引用：这个节点负责回答用户问题，通过使用第2步中筛选结果替换最终筛选后的文章并添加到引用，如`{{sys.get_documents_text(sys.space.a)}}`
 
 通过以上三个步骤，既提高大模型回答的准确性，又解决了实际查看引用的问题。
 </Accordion>
 </Accordions>
-		
+
+
+<Accordions>
+<Accordion title="如何直接调用系统API">
+<include>../public/sys_webapi.mdx</include>
+![](../imgs/add_inner_api_tool.png)
+
+</Accordion>
+</Accordions>
