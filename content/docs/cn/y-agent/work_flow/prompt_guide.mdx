@@ -112,7 +112,7 @@ description: 为了帮您更快的理解Y-Agent框架的使用方法，需要您
 | assignment |     | 指定选择某个下游节点角色执行后续流程 | command=\|\<\|assignment(next_roles=[\{"role":"角色1","message":"消息1"\},\{"role":"角色2","message":"消息2"\}])\|\>\| |
 | if  |     | if代码块 | \{% if %}\{% else %}\{% endif %} |
 | for |     | for代码块 | \{% for v in 变量名称 %}\{\{v}}\{% endfor %} |
-| batch |     | batch代码块，批处理使用的内部临时变量，batch存储的是，当前批次的数据集 | \{\{batch}} |
+| batch |     | batch代码块，分批处理使用的内部临时变量，batch存储的是，当前批次的数据集 | \{\{batch}} |
 |     | .index | 当前批次的序号 | index |
 |     | .item | 当前批次存储的数据集，可以用for循环遍历 | item |
 |     | .item\[n\] | 指定取本批次的第n条数据，n为从0开始的整数 | item\[n\] |
@@ -135,11 +135,11 @@ description: 为了帮您更快的理解Y-Agent框架的使用方法，需要您
 
 is_null_or_empty() （包括数组长度为0的情况）
 ```python
-  {{if sys.is_null_or_empty(变量名) }}
+{% if  sys.is_null_or_empty(变量名) %}
     变量名是null或者为空
-  {{else}}
+{% else %}
     变量名不为null或者不为空
-  {{end}}
+{% endif %}
 
 ```
 
@@ -275,7 +275,7 @@ get_document()，根据文档多个id提取对应内容
 ```python
 {% for doc in role.文档查询.product_retrieve  %}
 {"id":"{{doc.id}}","title":"{{doc.title}}"}
-{%endfor%}
+{% endfor %}
 
 ```
 知识库返回单个json对象格式：

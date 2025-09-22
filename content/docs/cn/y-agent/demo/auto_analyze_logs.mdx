@@ -32,12 +32,12 @@ description: 自动化分析日志
 
 ### 3. 添加日志分析节点
 
-添加一个批处理节点，并配置如下参数：
+添加一个分批处理节点，并配置如下参数：
 拆分字段：`{{role.查询流程日志.output.rows}}`
 每批大小：1
 并发数量：5
 
-在批处理节点内创建流程，并添加日志分析节点。
+在分批处理节点内创建流程，并添加日志分析节点。
 
 添加一个大模型节点，改名为  `审核专家` ，按照以下内容填写提示词：
 
@@ -52,4 +52,4 @@ description: 自动化分析日志
 
 [查询流程日志工具说明](docs/y-agent/work_flow/wf_nodes/df_tool_node#query_flow_logs).
 
-[批处理使用说明](/docs/y-agent/work_flow/wf_nodes/batch_node).
+[分批处理使用说明](/docs/y-agent/work_flow/wf_nodes/batch_node).

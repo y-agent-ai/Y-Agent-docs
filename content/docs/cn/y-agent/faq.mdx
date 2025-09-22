@@ -48,8 +48,8 @@ description: 一些日常使用上的问题
   
   </Accordion>
   
-  <Accordion  title="如何获取批处理内的角色名称？">
-  批处理内的角色是按照一定格式拼写的，可以通过以下方式获取角色名称：
+  <Accordion  title="如何获取分批处理内的角色名称？">
+  分批处理内的角色是按照一定格式拼写的，可以通过以下方式获取角色名称：
   ```python
   command=|<|assignment(next_roles=[{"role":"角色名_batch_{{batch.index}}","message":"做点什么"}])|>|
   ```
